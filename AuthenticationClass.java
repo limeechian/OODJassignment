@@ -14,8 +14,6 @@ import java.io.IOException;
  */
 public class AuthenticationClass {
     private static UserSessionClass currentUserSession;
-    // Path to the UsersTable text file
-    // private static final String UsersTable_filepath = "C:\\OODJ2023\\Java2024\\UsersTable.txt";
         
     public static boolean userAuthentication(String userID, String userPassword, String userRole) throws IOException {
         // Perform authentication logic here and return true if authenticated, if authentication fails, return false

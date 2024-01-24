@@ -18,26 +18,44 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
         
         customizeButtons();
-        displayUsername();
+        UserUtilityClass.displayUsername(tfUsername);
     }
     
     private void customizeButtons() {
     
         switch (AuthenticationClass.getCurrentUserSession().getUserRole()) {
-            case "Officer" -> {
+            case "OFFICER" -> {
                 btnOnlyOfficer.setVisible(true);
                 btnOnlySalesperson.setVisible(false);
                 btnOnlyAdministrator.setVisible(false);
+                
+                
+                // for testing - go to QuotationsListPage
+                btnViewQuotationsList.setVisible(true);
+                // for testing - go to SaleOrdersListPage
+                btnViewSaleOrdersList.setVisible(true);
             }
-            case "Salesperson" -> {
+            case "SALESPERSON" -> {
                 btnOnlyOfficer.setVisible(false);
                 btnOnlySalesperson.setVisible(true);
                 btnOnlyAdministrator.setVisible(false);
+                
+                
+                // for testing - go to QuotationsListPage
+                btnViewQuotationsList.setVisible(true);
+                // for testing - go to SaleOrdersListPage
+                btnViewSaleOrdersList.setVisible(true);
             }
-            case "Administrator" -> {
+            case "ADMIN" -> {
                 btnOnlyOfficer.setVisible(false);
                 btnOnlySalesperson.setVisible(false);
                 btnOnlyAdministrator.setVisible(true);
+                
+                
+                // for testing - go to QuotationsListPage
+                btnViewQuotationsList.setVisible(true);
+                // for testing - go to SaleOrdersListPage
+                btnViewSaleOrdersList.setVisible(true);
             }
             default -> {
             }
@@ -57,7 +75,7 @@ public class HomePage extends javax.swing.JFrame {
 //        }
             }
     
-    private void displayUsername() {
+/*    private void displayUsername() {
         // Get the current user's session information
         UserSessionClass currentUserSession = AuthenticationClass.getCurrentUserSession();
         
@@ -65,8 +83,8 @@ public class HomePage extends javax.swing.JFrame {
         if (currentUserSession != null) {
             // Get the username and display the tfUsername field
             String currentUserID = currentUserSession.getUserID();
-            
             String currentUsername = getUsernameFromUserID(currentUserID);
+            
             if (currentUsername != null) {
                 // Display the tfUsername field
                 tfUsername.setText(currentUsername);
@@ -94,7 +112,7 @@ public class HomePage extends javax.swing.JFrame {
         }
         
         return null; // Return null if userID is not found
-    }
+    } */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,7 +126,8 @@ public class HomePage extends javax.swing.JFrame {
         btnOnlySalesperson = new javax.swing.JButton();
         btnOnlyAdministrator = new javax.swing.JButton();
         tfUsername = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        btnViewQuotationsList = new javax.swing.JButton();
+        btnViewSaleOrdersList = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,41 +142,58 @@ public class HomePage extends javax.swing.JFrame {
 
         btnOnlyAdministrator.setText("only admin");
 
-        jTextField2.setText("jTextField2");
+        btnViewQuotationsList.setText("View Quotations List");
+        btnViewQuotationsList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewQuotationsListActionPerformed(evt);
+            }
+        });
+
+        btnViewSaleOrdersList.setText("View Sale Orders List");
+        btnViewSaleOrdersList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewSaleOrdersListActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(299, 299, 299))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOnlyOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnOnlySalesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(btnOnlyAdministrator, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnViewQuotationsList, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94)
+                        .addComponent(btnViewSaleOrdersList, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(29, 29, 29))
+                        .addComponent(btnOnlyOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnOnlySalesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(btnOnlyAdministrator, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOnlyOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOnlySalesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOnlyAdministrator, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewQuotationsList)
+                    .addComponent(btnViewSaleOrdersList))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,6 +202,27 @@ public class HomePage extends javax.swing.JFrame {
     private void btnOnlyOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOnlyOfficerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOnlyOfficerActionPerformed
+
+    private void btnViewQuotationsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewQuotationsListActionPerformed
+        // Create an instance of QuotationsListPage
+        QuotationsListPage quotationsListPage = new QuotationsListPage();
+        
+        // Set its visibilty to true (to show the QuotationsListPage)
+        quotationsListPage.setVisible(true);
+        
+        // Hide the current page (HomePage)
+        // this.setVisible(false);
+    }//GEN-LAST:event_btnViewQuotationsListActionPerformed
+
+    private void btnViewSaleOrdersListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewSaleOrdersListActionPerformed
+        // Create an instance of SaleOrdersListPage
+        SaleOrdersListPage saleOrdersListPage = new SaleOrdersListPage();
+        
+        // Set its visibility to true (to show the SaleOrdersListPage)
+        saleOrdersListPage.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnViewSaleOrdersListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +263,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnOnlyAdministrator;
     private javax.swing.JButton btnOnlyOfficer;
     private javax.swing.JButton btnOnlySalesperson;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton btnViewQuotationsList;
+    private javax.swing.JButton btnViewSaleOrdersList;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 }
