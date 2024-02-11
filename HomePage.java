@@ -4,115 +4,107 @@
  */
 package java2024;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Paths;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lim Ee Chian
+ * @author Loo Hui En
  */
 public class HomePage extends javax.swing.JFrame {
-    
+
     public HomePage() {
         initComponents();
-        
         customizeButtons();
         UserUtilityClass.displayUsername(tfUsername);
+
+        // Override the windowClosing method
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                confirmLogout(windowEvent);
+            }
+        });
     }
-    
-    private void customizeButtons() {
-    
-        switch (AuthenticationClass.getCurrentUserSession().getUserRole()) {
-            case "OFFICER" -> {
-                btnOnlyOfficer.setVisible(true);
-                btnOnlySalesperson.setVisible(false);
-                btnOnlyAdministrator.setVisible(false);
-                
-                
-                // for testing - go to QuotationsListPage
-                btnViewQuotationsList.setVisible(true);
-                // for testing - go to SaleOrdersListPage
-                btnViewSaleOrdersList.setVisible(true);
-            }
-            case "SALESPERSON" -> {
-                btnOnlyOfficer.setVisible(false);
-                btnOnlySalesperson.setVisible(true);
-                btnOnlyAdministrator.setVisible(false);
-                
-                
-                // for testing - go to QuotationsListPage
-                btnViewQuotationsList.setVisible(true);
-                // for testing - go to SaleOrdersListPage
-                btnViewSaleOrdersList.setVisible(true);
-            }
-            case "ADMIN" -> {
-                btnOnlyOfficer.setVisible(false);
-                btnOnlySalesperson.setVisible(false);
-                btnOnlyAdministrator.setVisible(true);
-                
-                
-                // for testing - go to QuotationsListPage
-                btnViewQuotationsList.setVisible(true);
-                // for testing - go to SaleOrdersListPage
-                btnViewSaleOrdersList.setVisible(true);
-            }
-            default -> {
-            }
+
+    private void confirmLogout(java.awt.event.WindowEvent windowEvent) {
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            // User chose to logout
+            LoginPage loginPage = new LoginPage();
+            loginPage.setVisible(true);
+            this.dispose(); // Close the current window
         }
-//        if (userRole.equals("Officer")) {
-//            btnOnlyOfficer.setVisible(true);
-//            btnOnlySalesperson.setVisible(false);
-//            btnOnlyAdministrator.setVisible(false);
-//        } else if (userRole.equals("Salesperson")) {
-//            btnOnlyOfficer.setVisible(false);
-//            btnOnlySalesperson.setVisible(true);
-//            btnOnlyAdministrator.setVisible(false);
-//        } else if (userRole.equals("Administrator")) {
-//            btnOnlyOfficer.setVisible(false);
-//            btnOnlySalesperson.setVisible(false);
-//            btnOnlyAdministrator.setVisible(true);
+    }
+
+//    private void showLogoutConfirmation() {
+//        int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
+//        if (option == JOptionPane.YES_OPTION) {
+//            // User confirmed logout
+//            LoginPage loginPage = new LoginPage();
+//            loginPage.setVisible(true);
+//            this.dispose(); // Close the current window
+//        } else {
+//            // If the user chose NO, do nothing
+//            setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 //        }
+//    }
+    private void customizeButtons() {
+        String userRole = AuthenticationClass.getCurrentUserSession().getUserRole();
+
+        btnManagePersonalProfile.setEnabled(true);
+        btnViewQuotationsList.setEnabled(true);
+        btnViewSaleOrdersList.setEnabled(true);
+        btnViewProductList.setEnabled(true);
+        btnViewPersonalSaleOrder.setEnabled(true);
+        btnManageUser.setEnabled(true);
+
+        switch (userRole) {
+            case "OFFICER":
+                btnViewPersonalSaleOrder.setEnabled(false);
+                btnManageUser.setEnabled(false);
+                break;
+            case "SALESPERSON":
+                btnManageUser.setEnabled(false);
+                break;
+            case "ADMIN":
+                btnViewPersonalSaleOrder.setEnabled(false);
+                break;
+            default:
+                break;
+        }
+        // Load and set icons for each button
+        setButtonIcon(btnManagePersonalProfile, "Manage_Personal_Profile.png");
+        setButtonIcon(btnViewQuotationsList, "View_Quotation_List.png");
+        setButtonIcon(btnViewSaleOrdersList, "View_Sale_Order_List.png");
+        setButtonIcon(btnViewProductList, "View_Product_List.png");
+        setButtonIcon(btnViewPersonalSaleOrder, "View_Personal_Sale_Order.png");
+        setButtonIcon(btnManageUser, "Manage_User.png");
+    }
+
+    private void setButtonIcon(javax.swing.JButton button, String iconName) {
+        try {
+            // Use an absolute path to load the image
+            java.net.URL imageURL = Paths.get("C:\\OODJassignment\\images", iconName).toUri().toURL();
+
+            if (imageURL != null) {
+                ImageIcon icon = new ImageIcon(imageURL);
+                button.setIcon(resizeImageIcon(icon, 40, 40));
+            } else {
+                System.err.println("Error loading image: " + iconName);
             }
-    
-/*    private void displayUsername() {
-        // Get the current user's session information
-        UserSessionClass currentUserSession = AuthenticationClass.getCurrentUserSession();
-        
-        // Check if a user is logged in
-        if (currentUserSession != null) {
-            // Get the username and display the tfUsername field
-            String currentUserID = currentUserSession.getUserID();
-            String currentUsername = getUsernameFromUserID(currentUserID);
-            
-            if (currentUsername != null) {
-                // Display the tfUsername field
-                tfUsername.setText(currentUsername);
-            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
-    
-    private String getUsernameFromUserID(String userID) {
-        try (FileReader fr = new FileReader("UsersTable.txt");
-            BufferedReader br = new BufferedReader(fr)) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] col = line.split(";");
-                String userIDFromFile = col[0].trim();
-                String usernameFromFile = col[3].trim();
-                
-                
-                // Check if the input userID matches with any user in the file
-                if (userID.equals(userIDFromFile)) {
-                    return usernameFromFile;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("IOException occured when get username from userID through UsersTable.txt: " + e.getMessage());
-        }
-        
-        return null; // Return null if userID is not found
-    } */
+
+    private ImageIcon resizeImageIcon(ImageIcon icon, int width, int height) {
+        return new ImageIcon(icon.getImage().getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,26 +114,95 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnOnlyOfficer = new javax.swing.JButton();
-        btnOnlySalesperson = new javax.swing.JButton();
-        btnOnlyAdministrator = new javax.swing.JButton();
+        panel2 = new java.awt.Panel();
         tfUsername = new javax.swing.JTextField();
+        btnLogout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnManagePersonalProfile = new javax.swing.JButton();
+        btnViewProductList = new javax.swing.JButton();
         btnViewQuotationsList = new javax.swing.JButton();
+        btnViewPersonalSaleOrder = new javax.swing.JButton();
         btnViewSaleOrdersList = new javax.swing.JButton();
+        btnManageUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home Page");
 
-        btnOnlyOfficer.setText("only officer have access");
-        btnOnlyOfficer.addActionListener(new java.awt.event.ActionListener() {
+        panel2.setBackground(new java.awt.Color(169, 179, 136));
+
+        tfUsername.setBackground(new java.awt.Color(254, 250, 224));
+        tfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOnlyOfficerActionPerformed(evt);
+                tfUsernameActionPerformed(evt);
             }
         });
 
-        btnOnlySalesperson.setText("only salesperson");
+        btnLogout.setBackground(new java.awt.Color(254, 250, 224));
+        btnLogout.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
-        btnOnlyAdministrator.setText("only admin");
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Home Page\n");
 
+        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
+        panel2.setLayout(panel2Layout);
+        panel2Layout.setHorizontalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnLogout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(181, 181, 181)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+        panel2Layout.setVerticalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLogout)
+                    .addComponent(jLabel1))
+                .addGap(511, 511, 511))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnManagePersonalProfile.setBackground(new java.awt.Color(254, 250, 224));
+        btnManagePersonalProfile.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnManagePersonalProfile.setText("Manage Personal Profile");
+        btnManagePersonalProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePersonalProfileActionPerformed(evt);
+            }
+        });
+
+        btnViewProductList.setBackground(new java.awt.Color(254, 250, 224));
+        btnViewProductList.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnViewProductList.setText("View Product List");
+        btnViewProductList.setMaximumSize(new java.awt.Dimension(158, 23));
+        btnViewProductList.setMinimumSize(new java.awt.Dimension(158, 23));
+        btnViewProductList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewProductListActionPerformed(evt);
+            }
+        });
+
+        btnViewQuotationsList.setBackground(new java.awt.Color(254, 250, 224));
+        btnViewQuotationsList.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnViewQuotationsList.setText("View Quotations List");
         btnViewQuotationsList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +210,19 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        btnViewPersonalSaleOrder.setBackground(new java.awt.Color(254, 250, 224));
+        btnViewPersonalSaleOrder.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnViewPersonalSaleOrder.setText("View Personal Sale Order");
+        btnViewPersonalSaleOrder.setMaximumSize(new java.awt.Dimension(158, 23));
+        btnViewPersonalSaleOrder.setMinimumSize(new java.awt.Dimension(158, 23));
+        btnViewPersonalSaleOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewPersonalSaleOrderActionPerformed(evt);
+            }
+        });
+
+        btnViewSaleOrdersList.setBackground(new java.awt.Color(254, 250, 224));
+        btnViewSaleOrdersList.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnViewSaleOrdersList.setText("View Sale Orders List");
         btnViewSaleOrdersList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,73 +230,111 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        btnManageUser.setBackground(new java.awt.Color(254, 250, 224));
+        btnManageUser.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnManageUser.setText("Manage User");
+        btnManageUser.setMaximumSize(new java.awt.Dimension(158, 23));
+        btnManageUser.setMinimumSize(new java.awt.Dimension(158, 23));
+        btnManageUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageUserActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManagePersonalProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewProductList, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnViewQuotationsList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewPersonalSaleOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewSaleOrdersList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnManagePersonalProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewQuotationsList, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewSaleOrdersList, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewProductList, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewPersonalSaleOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(299, 299, 299))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnViewQuotationsList, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(btnViewSaleOrdersList, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnOnlyOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnOnlySalesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(btnOnlyAdministrator, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+            .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOnlyOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOnlySalesperson, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOnlyAdministrator, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewQuotationsList)
-                    .addComponent(btnViewSaleOrdersList))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOnlyOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOnlyOfficerActionPerformed
+    private void btnManagePersonalProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePersonalProfileActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnOnlyOfficerActionPerformed
+    }//GEN-LAST:event_btnManagePersonalProfileActionPerformed
 
     private void btnViewQuotationsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewQuotationsListActionPerformed
-        // Create an instance of QuotationsListPage
-        QuotationsListPage quotationsListPage = new QuotationsListPage();
-        
-        // Set its visibilty to true (to show the QuotationsListPage)
-        quotationsListPage.setVisible(true);
-        
-        // Hide the current page (HomePage)
-        // this.setVisible(false);
+
     }//GEN-LAST:event_btnViewQuotationsListActionPerformed
 
     private void btnViewSaleOrdersListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewSaleOrdersListActionPerformed
-        // Create an instance of SaleOrdersListPage
-        SaleOrdersListPage saleOrdersListPage = new SaleOrdersListPage();
-        
-        // Set its visibility to true (to show the SaleOrdersListPage)
-        saleOrdersListPage.setVisible(true);
-        
-        
+
     }//GEN-LAST:event_btnViewSaleOrdersListActionPerformed
+
+    private void btnViewPersonalSaleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPersonalSaleOrderActionPerformed
+
+    }//GEN-LAST:event_btnViewPersonalSaleOrderActionPerformed
+
+    private void btnManageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserActionPerformed
+        ManageUserPage manageUserPage = new ManageUserPage();
+        manageUserPage.setVisible(true);
+    }//GEN-LAST:event_btnManageUserActionPerformed
+
+    private void btnViewProductListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProductListActionPerformed
+
+    }//GEN-LAST:event_btnViewProductListActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        int option = JOptionPane.showConfirmDialog(this, "Do you want to logout?", "Logout Confirmation", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            // User chose to logout
+            LoginPage loginPage = new LoginPage();
+            loginPage.setVisible(true);
+            this.dispose(); // Close the current window
+        } else {
+            // If the user chose NO, do nothing
+            setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
+
+    }//GEN-LAST:event_tfUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,11 +372,16 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOnlyAdministrator;
-    private javax.swing.JButton btnOnlyOfficer;
-    private javax.swing.JButton btnOnlySalesperson;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnManagePersonalProfile;
+    private javax.swing.JButton btnManageUser;
+    private javax.swing.JButton btnViewPersonalSaleOrder;
+    private javax.swing.JButton btnViewProductList;
     private javax.swing.JButton btnViewQuotationsList;
     private javax.swing.JButton btnViewSaleOrdersList;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private java.awt.Panel panel2;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 }

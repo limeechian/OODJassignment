@@ -82,6 +82,11 @@ public class ManageUserPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(169, 179, 136));
 
         tfUserName.setBackground(new java.awt.Color(254, 250, 224));
+        tfUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfUserNameActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 36)); // NOI18N
@@ -379,10 +384,10 @@ public class ManageUserPage extends javax.swing.JFrame {
         try {
             int selectedRowIndex = UsersTable.getSelectedRow();
             model.removeRow(selectedRowIndex);
-           
+
             // Save the changes to file
             saveDataToFile();
-            
+
             // Clear the text fields and combo box after deleting a row
             clearTextFields();
         } catch (Exception ex) {
@@ -395,38 +400,33 @@ public class ManageUserPage extends javax.swing.JFrame {
     // Edit text from a selected row
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         try {
-            // Get the selected row index
-            int selectedRowIndex = UsersTable.getSelectedRow();
+            // Validate that all fields are filled before adding a new row
+            // if TRUE, the row will be added
+            if (validateFields()) {
+                DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
 
-            if (selectedRowIndex >= 0) {
-                // Check if all fields are filled
-                if (validateFields()) {
-                    DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
-                    model.setValueAt(tfUserID.getText(), selectedRowIndex, 0);
-                    model.setValueAt(tfPassword.getText(), selectedRowIndex, 1);
-                    model.setValueAt(cbRole.getSelectedItem(), selectedRowIndex, 2);
-                    model.setValueAt(tfName.getText(), selectedRowIndex, 3);
-                    model.setValueAt(tfICNumber.getText(), selectedRowIndex, 4);
-                    model.setValueAt(tfPhoneNumber.getText(), selectedRowIndex, 5);
-                    model.setValueAt(tfEmail.getText(), selectedRowIndex, 6);
+                // Generate the next UserID
+                String newUserID = generateUserID();
 
-                    // Clear the text fields and combo box after editing
-                    clearTextFields();
+                // Populate the password field
+                String newUserPW = generateUserPW();
 
-                } else {
-                    // Display a JOptionPane with an error message for incomplete data
-                    JOptionPane.showMessageDialog(this, "Please fill in all fields before editing.",
-                            "Incomplete Data", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                // Display a JOptionPane with an error message for no selected row
-                JOptionPane.showMessageDialog(this, "Please select a row to edit.",
-                        "No selected row", JOptionPane.ERROR_MESSAGE);
+                model.addRow(new Object[]{
+                    newUserID,
+                    newUserPW,
+                    cbRole.getSelectedItem(),
+                    tfName.getText(),
+                    tfICNumber.getText(),
+                    tfPhoneNumber.getText(),
+                    tfEmail.getText()
+                });
+
+                // Save the changes to file
+                saveDataToFile();
+
+                // Clear the text fields and combo box after adding a new row
+                clearTextFields();
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // Handle the ArrayIndexOutOfBoundsException (no selected row)
-            JOptionPane.showMessageDialog(this, "Please select a row to edit.",
-                    "No selected row", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             // Handle any other exceptions
             JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(),
@@ -436,7 +436,7 @@ public class ManageUserPage extends javax.swing.JFrame {
 
     // Save to text file (UsersTable.txt)
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-           saveDataToFile();
+        saveDataToFile();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void tfUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserIDActionPerformed
@@ -503,17 +503,12 @@ public class ManageUserPage extends javax.swing.JFrame {
                     tfPhoneNumber.getText(),
                     tfEmail.getText()
                 });
-                
+
                 // Save the changes to file
                 saveDataToFile();
 
                 // Clear the text fields and combo box after adding a new row
                 clearTextFields();
-
-            } else {
-                // Display a JOptionPane with an error message for incomplete data
-                JOptionPane.showMessageDialog(this, "Please fill in all fields before adding a new user.",
-                        "Incomplete Data", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
             // Handle any other exceptions
@@ -525,6 +520,10 @@ public class ManageUserPage extends javax.swing.JFrame {
     private void tfClearTextFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfClearTextFieldsActionPerformed
         clearTextFields();
     }//GEN-LAST:event_tfClearTextFieldsActionPerformed
+
+    private void tfUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfUserNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -633,13 +632,32 @@ public class ManageUserPage extends javax.swing.JFrame {
     }
 
     // Validate all fields
-    // Checks if all the required fields have been filled before adding a new row
     private boolean validateFields() {
-        return !tfEmail.getText().isEmpty()
-                && !tfPhoneNumber.getText().isEmpty()
-                && !tfICNumber.getText().isEmpty()
-                && !tfName.getText().isEmpty()
-                && cbRole.getSelectedIndex() > 0;
+        // Check email format
+        if (!isEmailValid(tfEmail.getText())) {
+            // Show a prompt for invalid email format
+            JOptionPane.showMessageDialog(this, "Invalid email format.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            return false; // Return false immediately for invalid email format
+        }
+
+        // Check other fields
+        if (tfPhoneNumber.getText().isEmpty()
+                || tfICNumber.getText().isEmpty()
+                || tfName.getText().isEmpty()
+                || cbRole.getSelectedIndex() <= 0) {
+            // Display a JOptionPane with an error message for incomplete data
+            JOptionPane.showMessageDialog(this, "Please fill in all fields before editing.",
+                    "Incomplete Data", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true; // All validations passed
+    }
+
+    // Email validation using regular expression
+    private boolean isEmailValid(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
     }
 
     // Generate the next UserID based on the latest UserID in the file
@@ -750,41 +768,33 @@ public class ManageUserPage extends javax.swing.JFrame {
     }
 
     private void saveDataToFile() {
-        // Get the table model
         DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
-
-        // Get the number of rows in the table
         int rowCount = model.getRowCount();
 
-        // Create a StringBuilder to store the data
-        StringBuilder data = new StringBuilder();
-
-        // Append the column names to the data
-        for (int i = 0; i < model.getColumnCount(); i++) {
-            data.append(model.getColumnName(i));
-            if (i < model.getColumnCount() - 1) {
-                data.append(";");
-            }
-        }
-        data.append("\n");
-
-        // Append each row to the data
-        for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < model.getColumnCount(); j++) {
-                data.append(model.getValueAt(i, j));
-                if (j < model.getColumnCount() - 1) {
-                    data.append(";");
+        // Use try-with-resources to automatically close resources
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("UsersTable.txt"))) {
+            // Write column names to the file
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                writer.write(model.getColumnName(i));
+                if (i < model.getColumnCount() - 1) {
+                    writer.write(";");
                 }
             }
-            data.append("\n");
-        }
+            writer.write("\n");
 
-        // Write the data to the file
-        try (java.io.FileWriter fw = new java.io.FileWriter("UsersTable.txt")) {
-            fw.write(data.toString());
+            // Write each row to the file
+            for (int i = 0; i < rowCount; i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    writer.write(model.getValueAt(i, j).toString());
+                    if (j < model.getColumnCount() - 1) {
+                        writer.write(";");
+                    }
+                }
+                writer.write("\n");
+            }
 
             // Notify the user about the successful save
-            JOptionPane.showMessageDialog(this, "Changes Made.", "Save Successful", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Changes Made To The File.", "Save Successful", JOptionPane.INFORMATION_MESSAGE);
 
             // Clear the text fields and combo box after saving
             clearTextFields();
@@ -792,4 +802,5 @@ public class ManageUserPage extends javax.swing.JFrame {
             System.out.println("IOException occurred when saving data to UsersTable.txt: " + e.getMessage());
         }
     }
+
 }
