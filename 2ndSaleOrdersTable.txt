@@ -1,0 +1,7 @@
+SaleOrderNo;PurchaseOrderNo;PurchaseOrderDate;UserID;CustomerName;CustomerPhoneNo;TotalAmount;ProductStatus;CompletedDate;DeliveryDate;DeliveryStatus;OrderStatus
+S00001;P00001;12-02-2024;Y00003;limeechian;55123486;395.25;Work Done;14-02-2024;14-02-2024;Delivered;Closed
+S00003;P00003;13-02-2024;Y00003;celine;456456465;203.10;In Progress;14-02-2024;14-02-2024;Pending;Unapproved
+S00002;P00002;13-02-2024;Y00003;sam;999454564;864.35;Work Done;13-02-2024;13-02-2024;Ready for Delivery;Approved
+S00004;P00004;13-02-2024;Y00003;james;sdfsaf;5250.90;In Progress;14-02-2024;14-02-2024;Pending;Unapproved
+S00005;P00005;16-02-2024;Y00003;kelvin;8908908908;533.60;Pending;29-02-2024;29-02-2024;Pending;Unapproved
+S00006;P00006;14-02-2024;Y00003;Jeff;849023849;599.18;Pending;29-02-2024;29-02-2024;Pending;Unapproved
