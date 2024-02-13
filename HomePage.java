@@ -138,8 +138,9 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        btnLogout.setBackground(new java.awt.Color(254, 250, 224));
+        btnLogout.setBackground(new java.awt.Color(95, 111, 82));
         btnLogout.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,7 +296,8 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManagePersonalProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePersonalProfileActionPerformed
-        // TODO add your handling code here:
+        ManageProfilePage manageProfilePage = new ManageProfilePage();
+        manageProfilePage.setVisible(true);
     }//GEN-LAST:event_btnManagePersonalProfileActionPerformed
 
     private void btnViewQuotationsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewQuotationsListActionPerformed
@@ -307,7 +309,8 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewSaleOrdersListActionPerformed
 
     private void btnViewPersonalSaleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPersonalSaleOrderActionPerformed
-
+        ViewPersonalSaleOrderPage viewPersonalSaleOrderPage = new ViewPersonalSaleOrderPage();
+        viewPersonalSaleOrderPage.setVisible(true);
     }//GEN-LAST:event_btnViewPersonalSaleOrderActionPerformed
 
     private void btnManageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserActionPerformed
@@ -316,7 +319,8 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageUserActionPerformed
 
     private void btnViewProductListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProductListActionPerformed
-
+        ViewProductListPage viewProductListPage = new ViewProductListPage();
+        viewProductListPage.setVisible(true);
     }//GEN-LAST:event_btnViewProductListActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
