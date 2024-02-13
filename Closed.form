@@ -98,13 +98,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel2" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="CBOrderStatus" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="cbOrderStatus" min="-2" pref="165" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="JCBeforeDate" min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="dcStartDate" min="-2" pref="129" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="JCAfterDate" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="dcEndDate" min="-2" pref="119" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="10" max="32767" attributes="0"/>
@@ -138,11 +138,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="CBOrderStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbOrderStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="JCBeforeDate" min="-2" max="-2" attributes="0"/>
-                              <Component id="JCAfterDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="dcStartDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="dcEndDate" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="253" max="-2" attributes="0"/>
@@ -170,7 +170,7 @@
             <Property name="text" type="java.lang.String" value="Filter by order status: "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="CBOrderStatus">
+        <Component class="javax.swing.JComboBox" name="cbOrderStatus">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
@@ -190,7 +190,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="ClosedTable">
+            <Component class="javax.swing.JTable" name="tbSaleOrdersTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="0"/>
@@ -221,12 +221,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
           </Events>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="JCBeforeDate">
+        <Component class="com.toedter.calendar.JDateChooser" name="dcStartDate">
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="JCAfterDate">
+        <Component class="com.toedter.calendar.JDateChooser" name="dcEndDate">
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
           </Properties>

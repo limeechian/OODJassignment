@@ -46,7 +46,7 @@ public class Approved extends javax.swing.JFrame {
     private PropertyChangeListener dateChooserListener = new PropertyChangeListener() {
         @Override
         public void propertyChange(PropertyChangeEvent evt) {
-            if (JCBeforeDate.getDate() != null && JCAfterDate.getDate() != null) {
+            if (dcStartDate.getDate() != null && dcEndDate.getDate() != null) {
                 btnSearch.setEnabled(true);
             } else {
                 btnSearch.setEnabled(false);
@@ -66,15 +66,15 @@ public class Approved extends javax.swing.JFrame {
             }
         });
         // Add a listener to the JCBeforeDate component
-        JCBeforeDate.addPropertyChangeListener("date", new PropertyChangeListener() {
+        dcStartDate.addPropertyChangeListener("date", new PropertyChangeListener() {
          @Override
          public void propertyChange(PropertyChangeEvent evt) {
         // Check if both dates are selected
-        if (JCBeforeDate.getDate() != null && JCAfterDate.getDate() != null) {
+        if (dcStartDate.getDate() != null && dcEndDate.getDate() != null) {
             // Check if the selected date in JCBeforeDate is after the selected date in JCAfterDate
-            if (JCBeforeDate.getDate().after(JCAfterDate.getDate())) {
+            if (dcStartDate.getDate().after(dcEndDate.getDate())) {
                 // Disable the date chooser and show an error message
-                JCBeforeDate.setDate(null);
+                dcStartDate.setDate(null);
                 JOptionPane.showMessageDialog(Approved.this, "Selected date cannot be after the end date", "Date Selection Error", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -90,15 +90,15 @@ public class Approved extends javax.swing.JFrame {
         });
 
 // Add a listener to the JCAfterDate component
-JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
+dcEndDate.addPropertyChangeListener("date", new PropertyChangeListener() {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         // Check if both dates are selected
-        if (JCBeforeDate.getDate() != null && JCAfterDate.getDate() != null) {
+        if (dcStartDate.getDate() != null && dcEndDate.getDate() != null) {
             // Check if the selected date in JCAfterDate is before the selected date in JCBeforeDate
-            if (JCAfterDate.getDate().before(JCBeforeDate.getDate())) {
+            if (dcEndDate.getDate().before(dcStartDate.getDate())) {
                 // Disable the date chooser and show an error message
-                JCAfterDate.setDate(null);
+                dcEndDate.setDate(null);
                 JOptionPane.showMessageDialog(Approved.this, "Selected date cannot be before the start date", "Date Selection Error", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -107,18 +107,18 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
 
         
     // Add the listener to the date chooser components
-        JCBeforeDate.addPropertyChangeListener("date", dateChooserListener);
-        JCAfterDate.addPropertyChangeListener("date", dateChooserListener);
+        dcStartDate.addPropertyChangeListener("date", dateChooserListener);
+        dcEndDate.addPropertyChangeListener("date", dateChooserListener);
         
         
         // Initialize the JComboBox (OrderStatus)
-        CBOrderStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Approved", "Unapproved" }));
+        cbOrderStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Approved", "Unapproved" }));
         btnSearch.setEnabled(false);
         
         // Add an item listener to the combobox
-        CBOrderStatus.addItemListener(new java.awt.event.ItemListener() {
+        cbOrderStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CBOrderStatusItemStateChanged(evt);
+                cbOrderStatusItemStateChanged(evt);
             }
         });
     }
@@ -132,13 +132,13 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        CBOrderStatus = new javax.swing.JComboBox<>();
+        cbOrderStatus = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        JCBeforeDate = new com.toedter.calendar.JDateChooser();
-        JCAfterDate = new com.toedter.calendar.JDateChooser();
+        dcStartDate = new com.toedter.calendar.JDateChooser();
+        dcEndDate = new com.toedter.calendar.JDateChooser();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ApprovedTable = new javax.swing.JTable();
+        tbSaleOrdersTable = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
         btnGenerate = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -161,10 +161,10 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
         jLabel2.setForeground(new java.awt.Color(0, 102, 102));
         jLabel2.setText("Filter By Order Status: ");
 
-        CBOrderStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Approved", "Unapproved" }));
-        CBOrderStatus.addItemListener(new java.awt.event.ItemListener() {
+        cbOrderStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Approved", "Unapproved" }));
+        cbOrderStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CBOrderStatusItemStateChanged(evt);
+                cbOrderStatusItemStateChanged(evt);
             }
         });
 
@@ -172,9 +172,9 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
         jLabel4.setForeground(new java.awt.Color(0, 102, 102));
         jLabel4.setText("Filter by PO Date: ");
 
-        JCBeforeDate.setDateFormatString("dd-MM-yyyy");
+        dcStartDate.setDateFormatString("dd-MM-yyyy");
 
-        JCAfterDate.setDateFormatString("dd-MM-yyyy");
+        dcEndDate.setDateFormatString("dd-MM-yyyy");
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +183,7 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
             }
         });
 
-        ApprovedTable.setModel(new javax.swing.table.DefaultTableModel(
+        tbSaleOrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -191,8 +191,8 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
 
             }
         ));
-        ApprovedTable.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        jScrollPane1.setViewportView(ApprovedTable);
+        tbSaleOrdersTable.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jScrollPane1.setViewportView(tbSaleOrdersTable);
 
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -244,15 +244,15 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CBOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(183, 183, 183)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JCBeforeDate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dcStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(JCAfterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dcEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -280,10 +280,10 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2)
-                                .addComponent(CBOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4))
-                            .addComponent(JCBeforeDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JCAfterDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dcStartDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dcEndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSearch, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(31, 31, 31))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -346,7 +346,7 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
 
             // Create a model with specific columns
             DefaultTableModel model = new DefaultTableModel(displayColumns, 0);
-            ApprovedTable.setModel(model);
+            tbSaleOrdersTable.setModel(model);
 
             String line;
             while ((line = br.readLine()) != null) {
@@ -358,15 +358,15 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
             }
 
             // Enable the ComboBox after loading data into the JTable
-            CBOrderStatus.setEnabled(true);
+            cbOrderStatus.setEnabled(true);
 
             // Check if the table is empty and disable date chooser components accordingly
             if (model.getRowCount() == 0) {
-                JCBeforeDate.setEnabled(false);
-                JCAfterDate.setEnabled(false);
+                dcStartDate.setEnabled(false);
+                dcEndDate.setEnabled(false);
             } else {
-                JCBeforeDate.setEnabled(true);
-                JCAfterDate.setEnabled(true);
+                dcStartDate.setEnabled(true);
+                dcEndDate.setEnabled(true);
             }
 
         } catch (Exception ex) {
@@ -378,9 +378,9 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
       
        // Clear the date choosers and set the selected index of the combobox to 0 (None)
-    JCBeforeDate.setDate(null);
-    JCAfterDate.setDate(null);
-    CBOrderStatus.setSelectedIndex(0);
+    dcStartDate.setDate(null);
+    dcEndDate.setDate(null);
+    cbOrderStatus.setSelectedIndex(0);
     
     // Disable the search button since there's no filter set
     btnSearch.setEnabled(false);
@@ -390,41 +390,41 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     //ComboBox Selection Changed
-    private void CBOrderStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBOrderStatusItemStateChanged
+    private void cbOrderStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbOrderStatusItemStateChanged
        
-        String query = CBOrderStatus.getSelectedItem().toString();
+        String query = cbOrderStatus.getSelectedItem().toString();
         filter(query);
-    }//GEN-LAST:event_CBOrderStatusItemStateChanged
+    }//GEN-LAST:event_cbOrderStatusItemStateChanged
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
 
-               DefaultTableModel model = (DefaultTableModel) ApprovedTable.getModel();
+               DefaultTableModel model = (DefaultTableModel) tbSaleOrdersTable.getModel();
     List<Object[]> rowDataList = new ArrayList<>();
 
     // Check if any filters are applied or if rows are selected
-    if ((CBOrderStatus.getSelectedIndex() == 0 && JCBeforeDate.getDate() == null && JCAfterDate.getDate() == null) && ApprovedTable.getSelectedRow() == -1) {
+    if ((cbOrderStatus.getSelectedIndex() == 0 && dcStartDate.getDate() == null && dcEndDate.getDate() == null) && tbSaleOrdersTable.getSelectedRow() == -1) {
         // Display a dialog box to notify the user to filter before generating the report
         JOptionPane.showMessageDialog(this, "Please apply filters or select a row before generating the report.", "Filter Required", JOptionPane.WARNING_MESSAGE);
     } else {
         // Proceed with generating the report
-        int[] selectedRows = ApprovedTable.getSelectedRows();
+        int[] selectedRows = tbSaleOrdersTable.getSelectedRows();
 
         if (selectedRows.length > 0) {
             // Collect data from selected rows
             for (int selectedRow : selectedRows) {
                Object[] rowData = new Object[5]; // Array to store only the required attributes
-                rowData[0] = ApprovedTable.getValueAt(selectedRow, 3); // UserID
-                rowData[1] = ApprovedTable.getValueAt(selectedRow, 4); // CustomerName
-                rowData[2] = ApprovedTable.getValueAt(selectedRow, 1); // PurchaseOrderNo
-                rowData[3] = ApprovedTable.getValueAt(selectedRow, 2); // PurchaseOrderDate
-                rowData[4] = ApprovedTable.getValueAt(selectedRow, 6); // TotalAmount
+                rowData[0] = tbSaleOrdersTable.getValueAt(selectedRow, 3); // UserID
+                rowData[1] = tbSaleOrdersTable.getValueAt(selectedRow, 4); // CustomerName
+                rowData[2] = tbSaleOrdersTable.getValueAt(selectedRow, 1); // PurchaseOrderNo
+                rowData[3] = tbSaleOrdersTable.getValueAt(selectedRow, 2); // PurchaseOrderDate
+                rowData[4] = tbSaleOrdersTable.getValueAt(selectedRow, 6); // TotalAmount
                 rowDataList.add(rowData);
             }
         } else {
             // Collect data from all rows that meet the filter criteria
             for (int i = 0; i < model.getRowCount(); i++) {
                 // Check if the row passes the filter criteria
-                if (ApprovedTable.getRowSorter().convertRowIndexToView(i) != -1) {
+                if (tbSaleOrdersTable.getRowSorter().convertRowIndexToView(i) != -1) {
                      Object[] rowData = new Object[5]; // Array to store only the required attributes
                     rowData[0] = model.getValueAt(i, 3); // UserID
                     rowData[1] = model.getValueAt(i, 4); // CustomerName
@@ -439,49 +439,6 @@ JCAfterDate.addPropertyChangeListener("date", new PropertyChangeListener() {
         // Generate PDF directly without involving another frame
         generatePDF(rowDataList);
     }
-   /*  DefaultTableModel model = (DefaultTableModel) ApprovedTable.getModel();
-    List<Object[]> rowDataList = new ArrayList<>();
-
-    // Check if any filters are applied or if a row is selected
-    if ((CBOrderStatus.getSelectedIndex() == 0 && JCBeforeDate.getDate() == null && JCAfterDate.getDate() == null) && ApprovedTable.getSelectedRow() == -1) {
-        // Display a dialog box to notify the user to filter before generating the report
-        JOptionPane.showMessageDialog(this, "Please apply filters or select a row before generating the report.", "Filter Required", JOptionPane.WARNING_MESSAGE);
-    } else {
-        // Proceed with generating the report
-
-        int[] selectedRows = ApprovedTable.getSelectedRows();
-
-        // If rows are selected, add only the selected rows to rowDataList
-        if (selectedRows.length > 0) {
-            for (int selectedRow : selectedRows) {
-                Object[] rowData = new Object[5]; // Array to store only the required attributes
-                rowData[0] = ApprovedTable.getValueAt(selectedRow, 3); // UserID
-                rowData[1] = ApprovedTable.getValueAt(selectedRow, 4); // CustomerName
-                rowData[2] = ApprovedTable.getValueAt(selectedRow, 1); // PurchaseOrderNo
-                rowData[3] = ApprovedTable.getValueAt(selectedRow, 2); // PurchaseOrderDate
-                rowData[4] = ApprovedTable.getValueAt(selectedRow, 6); // TotalAmount
-                rowDataList.add(rowData);
-            }
-        } else {
-            // Collect data from all rows that meet the filter criteria
-            for (int i = 0; i < model.getRowCount(); i++) {
-                // Check if the row passes the filter criteria
-                if (ApprovedTable.getRowSorter().convertRowIndexToView(i) != -1) {
-                    Object[] rowData = new Object[5]; // Array to store only the required attributes
-                    rowData[0] = model.getValueAt(i, 3); // UserID
-                    rowData[1] = model.getValueAt(i, 4); // CustomerName
-                    rowData[2] = model.getValueAt(i, 1); // PurchaseOrderNo
-                    rowData[3] = model.getValueAt(i, 2); // PurchaseOrderDate
-                    rowData[4] = model.getValueAt(i, 6); // TotalAmount
-                    rowDataList.add(rowData);
-                }
-            }
-        }
-
-        // Generate PDF directly without involving another frame
-        generatePDF(rowDataList);
-         //JOptionPane.showMessageDialog(this, "PDF report generated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-    }*/
 }
 
 // Method to generate PDF from row data
@@ -529,49 +486,7 @@ private void generatePDF(List<Object[]> rowDataList) {
         ex.printStackTrace();
         JOptionPane.showMessageDialog(this, "Error generating PDF report: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-    
-   /*Document document = new Document();
-    String userHomeDirectory = System.getProperty("user.home");
-    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-    String filePath = userHomeDirectory + File.separator + "ApprovedReport_" + timeStamp + ".pdf";
-
-    try {
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
-
-        // Add header and footer
-        HeaderFooterPageEvent event = new HeaderFooterPageEvent();
-        writer.setPageEvent(event);
-
-        document.open();
-
-        // Add "YOYO" on a new line
-        Paragraph yoyoParagraph = new Paragraph("YOYO Approved Report\n\n");
-        document.add(yoyoParagraph);
-
-        // Add header row with column names
-        PdfPTable headerTable = new PdfPTable(5);
-        String[] columnNames = {"SalespersonID", "Customer", "PONo", "PODate", "TotalAmount"};
-        for (String columnName : columnNames) {
-            headerTable.addCell(new Phrase(columnName));
-        }
-        document.add(headerTable);
-
-        // Add data rows
-        for (Object[] rowData : rowDataList) {
-            PdfPTable table = new PdfPTable(5);
-            for (Object cellData : rowData) {
-                table.addCell(cellData != null ? cellData.toString() : "");
-            }
-            document.add(table);
-        }
-
-        document.close();
-
-        JOptionPane.showMessageDialog(this, "PDF report generated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-    } catch (DocumentException | FileNotFoundException ex) {
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error generating PDF report: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }*/
+  
     }//GEN-LAST:event_btnGenerateActionPerformed
 
 // Custom page event class for header and footer
@@ -623,7 +538,7 @@ try {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
    
     // Check if either JCBeforeDate or JCAfterDate is null
-    if (JCBeforeDate.getDate() == null || JCAfterDate.getDate() == null) {
+    if (dcStartDate.getDate() == null || dcEndDate.getDate() == null) {
         // Display a message box indicating that one or both dates are not selected
         JOptionPane.showMessageDialog(this, "Please select both dates.", "Date Selection Error", JOptionPane.ERROR_MESSAGE);
     } else {
@@ -639,19 +554,19 @@ try {
 
     //Filter By Purchase Order Date
 private void filterByDate() {
-    DefaultTableModel model = (DefaultTableModel) ApprovedTable.getModel();
+    DefaultTableModel model = (DefaultTableModel) tbSaleOrdersTable.getModel();
     TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-    ApprovedTable.setRowSorter(sorter);
+    tbSaleOrdersTable.setRowSorter(sorter);
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     
-    System.out.println("BeforeDate: " + JCBeforeDate.getDate());
-    System.out.println("AfterDate: " + JCAfterDate.getDate());
+    System.out.println("BeforeDate: " + dcStartDate.getDate());
+    System.out.println("AfterDate: " + dcEndDate.getDate());
     
     
-    Date fromDate = JCBeforeDate.getDate();
-    Date toDate = JCAfterDate.getDate();
-    String selectedOrderStatus = CBOrderStatus.getSelectedItem().toString();
+    Date fromDate = dcStartDate.getDate();
+    Date toDate = dcEndDate.getDate();
+    String selectedOrderStatus = cbOrderStatus.getSelectedItem().toString();
 
     RowFilter<DefaultTableModel, Object> dateFilter = new RowFilter<DefaultTableModel, Object>() {
         @Override
@@ -683,8 +598,8 @@ private void filterByDate() {
 
 // Helper method to get the column index by column name
 private int getColumnIndex(String columnName) {
-    for (int i = 0; i < ApprovedTable.getColumnCount(); i++) {
-        if (ApprovedTable.getColumnName(i).equals(columnName)) {
+    for (int i = 0; i < tbSaleOrdersTable.getColumnCount(); i++) {
+        if (tbSaleOrdersTable.getColumnName(i).equals(columnName)) {
             return i;
         }
     }
@@ -694,9 +609,9 @@ private int getColumnIndex(String columnName) {
 
 //Filter by Order Status (ComboBox)
 private void filter(String query) {
-    DefaultTableModel model = (DefaultTableModel) ApprovedTable.getModel();
+    DefaultTableModel model = (DefaultTableModel) tbSaleOrdersTable.getModel();
     TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(model);
-    ApprovedTable.setRowSorter(tr);
+    tbSaleOrdersTable.setRowSorter(tr);
 
     if (!query.equals("None")) {
         tr.setRowFilter(RowFilter.regexFilter(query));
@@ -739,13 +654,12 @@ private void filter(String query) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTable ApprovedTable;
-    private javax.swing.JComboBox<String> CBOrderStatus;
-    private com.toedter.calendar.JDateChooser JCAfterDate;
-    private com.toedter.calendar.JDateChooser JCBeforeDate;
     private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cbOrderStatus;
+    private com.toedter.calendar.JDateChooser dcEndDate;
+    private com.toedter.calendar.JDateChooser dcStartDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -755,6 +669,7 @@ private void filter(String query) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tbSaleOrdersTable;
     private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 
