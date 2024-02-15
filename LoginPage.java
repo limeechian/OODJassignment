@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package java2024;
+package oodjassignment;
 
 import javax.swing.JOptionPane;
 import java.io.IOException;
@@ -17,6 +17,9 @@ public class LoginPage extends javax.swing.JFrame {
     public LoginPage() {
         initComponents();
 
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
         // Define User Role options for the cbUserRole JComboBox
         String[] userRoleOptions = {"", "ADMIN", "OFFICER", "SALESPERSON"};
         cbUserRole.setModel(new DefaultComboBoxModel<>(userRoleOptions));
@@ -115,8 +118,6 @@ public class LoginPage extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\OODJassignment\\images\\Yoyo_Logo.jpeg")); // NOI18N
-
         jLabel5.setFont(new java.awt.Font("Dubai Medium", 0, 18)); // NOI18N
         jLabel5.setText("Furniture Sale Ordering Management System");
 
@@ -155,13 +156,13 @@ public class LoginPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pfUserPW, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbUserRole, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -241,7 +242,6 @@ public class LoginPage extends javax.swing.JFrame {
                             "Login Unsucessful", JOptionPane.ERROR_MESSAGE);
             }
         } catch (IOException e) {
-            // Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("IOException occured once press Login button: " + e.getMessage());
         }
     }//GEN-LAST:event_btnLoginActionPerformed

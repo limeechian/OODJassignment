@@ -1,4 +1,4 @@
-package oodj;
+package oodjassignment;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -56,6 +56,10 @@ public class Approved extends javax.swing.JFrame {
     
     public Approved() {
         initComponents();
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
         loadTableData();
        //generateReportFrame = new GenerateApprovedReport(); // Initialize the second JFrame
        // UserUtilityClass.displayUsername(tfUsername);
@@ -331,7 +335,7 @@ dcEndDate.addPropertyChangeListener("date", new PropertyChangeListener() {
         // Method to load data into the JTable from the text file
     private void loadTableData() {
      // Text File
-        String filePath = "C:\\GitHub\\OODJassignment\\OODJAss\\SaleOrdersTable.txt";
+        String filePath = "SaleOrdersTable.txt";
         File file = new File(filePath);
 
         try {

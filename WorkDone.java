@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package oodj;
+package oodjassignment;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -33,8 +33,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.UndoableEditListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
+import javax.swing.text.Position;
+import javax.swing.text.Segment;
 
 
 /**
@@ -45,7 +53,7 @@ public class WorkDone extends javax.swing.JFrame {
     
     
      // Add a listener to the date chooser components
-    private PropertyChangeListener dateChooserListener = new PropertyChangeListener() {
+    private final PropertyChangeListener dateChooserListener = new PropertyChangeListener() {
         @Override
         public void propertyChange(PropertyChangeEvent evt) {
             if (dcStartDate.getDate() != null && dcEndDate.getDate() != null) {
@@ -58,8 +66,12 @@ public class WorkDone extends javax.swing.JFrame {
 
     public WorkDone() {
         initComponents();
-         loadTableData();
-          // UserUtilityClass.displayUsername(tfUsername);
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
+        loadTableData();
+        // UserUtilityClass.displayUsername(tfUsername);
         addComboBoxActionListener(); // Add ActionListener to the ComboBox
         
          // Add the listener to the date chooser components
@@ -79,20 +91,17 @@ public class WorkDone extends javax.swing.JFrame {
     });
 
     // Add a listener to the JCAfterDate component
-    dcEndDate.addPropertyChangeListener("date", new PropertyChangeListener() {
-        @Override
-        public void propertyChange(PropertyChangeEvent evt) {
-            // Check if both dates are selected
-            if (dcStartDate.getDate() != null && dcEndDate.getDate() != null) {
-                // Check if the selected date in JCAfterDate is before the selected date in JCBeforeDate
-                if (dcEndDate.getDate().before(dcStartDate.getDate())) {
-                    // Disable the date chooser and show an error message
-                    dcEndDate.setDate(null);
-                    JOptionPane.showMessageDialog(WorkDone.this, "Selected date cannot be before the start date", "Date Selection Error", JOptionPane.ERROR_MESSAGE);
-                }
+    dcEndDate.addPropertyChangeListener("date", (PropertyChangeEvent evt) -> {
+        // Check if both dates are selected
+        if (dcStartDate.getDate() != null && dcEndDate.getDate() != null) {
+            // Check if the selected date in JCAfterDate is before the selected date in JCBeforeDate
+            if (dcEndDate.getDate().before(dcStartDate.getDate())) {
+                // Disable the date chooser and show an error message
+                dcEndDate.setDate(null);
+                JOptionPane.showMessageDialog(WorkDone.this, "Selected date cannot be before the start date", "Date Selection Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    });
+        });
         
           // Attach dateChooserListener to both date chooser components
     dcStartDate.addPropertyChangeListener(dateChooserListener);
@@ -305,7 +314,7 @@ public class WorkDone extends javax.swing.JFrame {
     private void loadTableData() {
       
           // Text File
-    String filePath = "C:\\GitHub\\OODJassignment\\OODJAss\\SaleOrdersTable.txt";
+    String filePath = "SaleOrdersTable.txt";
     File file = new File(filePath);
 
     try {
@@ -425,7 +434,92 @@ public class WorkDone extends javax.swing.JFrame {
 
 // Method to generate PDF from row data
 private void generatePDF(List<Object[]> rowDataList) {
-    Document document = new Document();
+    Document document = new Document() {
+        @Override
+        public int getLength() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void addDocumentListener(DocumentListener listener) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void removeDocumentListener(DocumentListener listener) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void addUndoableEditListener(UndoableEditListener listener) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void removeUndoableEditListener(UndoableEditListener listener) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public Object getProperty(Object key) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void putProperty(Object key, Object value) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void remove(int offs, int len) throws BadLocationException {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void insertString(int offset, String str, AttributeSet a) throws BadLocationException {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public String getText(int offset, int length) throws BadLocationException {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void getText(int offset, int length, Segment txt) throws BadLocationException {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public Position getStartPosition() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public Position getEndPosition() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public Position createPosition(int offs) throws BadLocationException {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public Element[] getRootElements() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public Element getDefaultRootElement() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void render(Runnable r) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    };
     String userHomeDirectory = System.getProperty("user.home");
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
     String filePath = userHomeDirectory + File.separator + "WorkDoneReport_" + timeStamp + ".pdf";

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package java2024;
+package oodjassignment;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -18,16 +18,30 @@ import javax.swing.table.TableRowSorter;
  *
  * @author User
  */
-public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
+public final class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewSaleOrder
      */
     public ViewPersonalSaleOrderPage() {
         initComponents();
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
         ViewSaleOrderTable();
 
-        UserUtilityClass.displayUsername(tfUserName);
+        UserUtilityClass.displayUsername(tfUsername);
+        
+        String userID = "";
+        UserSessionClass currentUserSession = AuthenticationClass.getCurrentUserSession();
+        // Check if the user is logged in
+        if (currentUserSession != null) {
+            // Get the userID and set it as the Salesperson ID
+            userID = currentUserSession.getUserID();
+        }
+        // Set the text of tfUserID
+        tfUserID.setText(userID);
         
         // Set up the custom close operation
         setupCloseOperation();
@@ -39,7 +53,7 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
 
             String line;
 
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) tb2ndSaleOrdersTable.getModel();
 
             while ((line = bufferedReader.readLine()) != null) {
                 String[] values = line.split(";");
@@ -66,17 +80,17 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tfid = new javax.swing.JTextField();
-        tfsearch = new javax.swing.JTextField();
-        btnsearch = new javax.swing.JButton();
-        cbfilter = new javax.swing.JComboBox<>();
-        btnrefresh = new javax.swing.JButton();
+        tfUserID = new javax.swing.JTextField();
+        tfSearch = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        cbOrderStatusFilter = new javax.swing.JComboBox<>();
+        btnRefresh = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        tfUserName = new javax.swing.JTextField();
+        tfUsername = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb2ndSaleOrdersTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("View Personal Sale Order Page");
@@ -90,53 +104,53 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel3.setText("Filter by Order Status : ");
 
-        tfid.addActionListener(new java.awt.event.ActionListener() {
+        tfUserID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfidActionPerformed(evt);
+                tfUserIDActionPerformed(evt);
             }
         });
 
-        tfsearch.addActionListener(new java.awt.event.ActionListener() {
+        tfSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfsearchActionPerformed(evt);
+                tfSearchActionPerformed(evt);
             }
         });
 
-        btnsearch.setBackground(new java.awt.Color(95, 111, 82));
-        btnsearch.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btnsearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnsearch.setText("Search");
-        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(95, 111, 82));
+        btnSearch.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsearchActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        cbfilter.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        cbfilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Approved", "Unapproved" }));
-        cbfilter.addActionListener(new java.awt.event.ActionListener() {
+        cbOrderStatusFilter.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        cbOrderStatusFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Approved", "Unapproved" }));
+        cbOrderStatusFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbfilterActionPerformed(evt);
+                cbOrderStatusFilterActionPerformed(evt);
             }
         });
 
-        btnrefresh.setBackground(new java.awt.Color(95, 111, 82));
-        btnrefresh.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btnrefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnrefresh.setText("Refresh");
-        btnrefresh.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh.setBackground(new java.awt.Color(95, 111, 82));
+        btnRefresh.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnrefreshActionPerformed(evt);
+                btnRefreshActionPerformed(evt);
             }
         });
 
         jPanel1.setBackground(new java.awt.Color(169, 179, 136));
         jPanel1.setPreferredSize(new java.awt.Dimension(731, 114));
 
-        tfUserName.setBackground(new java.awt.Color(254, 250, 224));
-        tfUserName.addActionListener(new java.awt.event.ActionListener() {
+        tfUsername.setBackground(new java.awt.Color(254, 250, 224));
+        tfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUserNameActionPerformed(evt);
+                tfUsernameActionPerformed(evt);
             }
         });
 
@@ -152,7 +166,7 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -162,7 +176,7 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -170,7 +184,7 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(254, 250, 224));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb2ndSaleOrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -178,8 +192,8 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
                 "SaleOrderNo", "PurchaseOrderNo", "PurchaseOrderDate", "SalepersonID", "CustomerName", "CustomerPhoneNo", "TotalAmount", "ProductStatus", "CompletedDate", "DeliveryDate", "DeliveryStatus", "OrderStatus"
             }
         ));
-        jTable1.setCellSelectionEnabled(true);
-        jScrollPane1.setViewportView(jTable1);
+        tb2ndSaleOrdersTable.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(tb2ndSaleOrdersTable);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -211,16 +225,15 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cbfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnrefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfid, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbOrderStatusFilter, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfUserID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -231,14 +244,14 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfid))
+                    .addComponent(tfUserID))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cbfilter, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnsearch)
-                    .addComponent(btnrefresh))
+                    .addComponent(cbOrderStatusFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch)
+                    .addComponent(btnRefresh))
                 .addGap(15, 15, 15)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -258,45 +271,45 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfidActionPerformed
+    private void tfUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfidActionPerformed
+    }//GEN-LAST:event_tfUserIDActionPerformed
 
-    private void tfsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfsearchActionPerformed
+    private void tfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfsearchActionPerformed
+    }//GEN-LAST:event_tfSearchActionPerformed
 
-    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tb2ndSaleOrdersTable.getModel();
 
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
-        jTable1.setRowSorter(obj);
+        tb2ndSaleOrdersTable.setRowSorter(obj);
 
-        obj.setRowFilter(RowFilter.regexFilter(tfsearch.getText()));
-    }//GEN-LAST:event_btnsearchActionPerformed
+        obj.setRowFilter(RowFilter.regexFilter(tfSearch.getText()));
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void tfUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserNameActionPerformed
+    private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfUserNameActionPerformed
+    }//GEN-LAST:event_tfUsernameActionPerformed
 
-    private void btnrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrefreshActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:    
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) tb2ndSaleOrdersTable.getModel();
         TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
 
-        jTable1.setRowSorter(obj);
+        tb2ndSaleOrdersTable.setRowSorter(obj);
 
         obj.setRowFilter(null);
-    }//GEN-LAST:event_btnrefreshActionPerformed
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void cbfilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbfilterActionPerformed
+    private void cbOrderStatusFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOrderStatusFilterActionPerformed
         // TODO add your handling code here:
-        String selectedProductType = (String) cbfilter.getSelectedItem();
+        String selectedProductType = (String) cbOrderStatusFilter.getSelectedItem();
 
-        TableRowSorter<DefaultTableModel> rowSorter = (TableRowSorter<DefaultTableModel>) jTable1.getRowSorter();
+        TableRowSorter<DefaultTableModel> rowSorter = (TableRowSorter<DefaultTableModel>) tb2ndSaleOrdersTable.getRowSorter();
         if (rowSorter == null) {
-            rowSorter = new TableRowSorter<>((DefaultTableModel) jTable1.getModel());
-            jTable1.setRowSorter(rowSorter);
+            rowSorter = new TableRowSorter<>((DefaultTableModel) tb2ndSaleOrdersTable.getModel());
+            tb2ndSaleOrdersTable.setRowSorter(rowSorter);
         }
 
         RowFilter<Object, Object> rowFilter = new RowFilter<Object, Object>() {
@@ -310,7 +323,7 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
         };
 
         rowSorter.setRowFilter(rowFilter);
-    }//GEN-LAST:event_cbfilterActionPerformed
+    }//GEN-LAST:event_cbOrderStatusFilterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,9 +380,9 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnrefresh;
-    private javax.swing.JButton btnsearch;
-    private javax.swing.JComboBox<String> cbfilter;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JComboBox<String> cbOrderStatusFilter;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -377,9 +390,9 @@ public class ViewPersonalSaleOrderPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField tfUserName;
-    private javax.swing.JTextField tfid;
-    private javax.swing.JTextField tfsearch;
+    private javax.swing.JTable tb2ndSaleOrdersTable;
+    private javax.swing.JTextField tfSearch;
+    private javax.swing.JTextField tfUserID;
+    private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 }
