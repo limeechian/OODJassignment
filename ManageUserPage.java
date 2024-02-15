@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package java2024;
+package oodjassignment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,6 +24,10 @@ public class ManageUserPage extends javax.swing.JFrame {
      */
     public ManageUserPage() {
         initComponents();
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
         // Define User Role options for the cbUserRole JComboBox
         String[] userRoleOptions = {"", "ADMIN", "OFFICER", "SALESPERSON"};
         cbRole.setModel(new DefaultComboBoxModel<>(userRoleOptions));
@@ -32,7 +36,7 @@ public class ManageUserPage extends javax.swing.JFrame {
         tfUserID.setEditable(false);
         tfUserID.setFocusable(false);
 
-        UserUtilityClass.displayUsername(tfUserName);
+        UserUtilityClass.displayUsername(tfUsername);
 
         // Set up the custom close operation
         setupCloseOperation();
@@ -49,7 +53,7 @@ public class ManageUserPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        tfUserName = new javax.swing.JTextField();
+        tfUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -66,10 +70,10 @@ public class ManageUserPage extends javax.swing.JFrame {
         tfPhoneNumber = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
-        tfClearTextFields = new javax.swing.JButton();
+        btnClearTextFields = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        UsersTable = new javax.swing.JTable();
+        tbUsersTable = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -82,10 +86,10 @@ public class ManageUserPage extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(169, 179, 136));
 
-        tfUserName.setBackground(new java.awt.Color(254, 250, 224));
-        tfUserName.addActionListener(new java.awt.event.ActionListener() {
+        tfUsername.setBackground(new java.awt.Color(254, 250, 224));
+        tfUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfUserNameActionPerformed(evt);
+                tfUsernameActionPerformed(evt);
             }
         });
 
@@ -102,7 +106,7 @@ public class ManageUserPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(266, 266, 266)
-                .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
         jPanel2Layout.setVerticalGroup(
@@ -111,7 +115,7 @@ public class ManageUserPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel1)))
@@ -179,13 +183,13 @@ public class ManageUserPage extends javax.swing.JFrame {
             }
         });
 
-        tfClearTextFields.setBackground(new java.awt.Color(95, 111, 82));
-        tfClearTextFields.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        tfClearTextFields.setForeground(new java.awt.Color(255, 255, 255));
-        tfClearTextFields.setText("Clear");
-        tfClearTextFields.addActionListener(new java.awt.event.ActionListener() {
+        btnClearTextFields.setBackground(new java.awt.Color(95, 111, 82));
+        btnClearTextFields.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnClearTextFields.setForeground(new java.awt.Color(255, 255, 255));
+        btnClearTextFields.setText("Clear");
+        btnClearTextFields.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfClearTextFieldsActionPerformed(evt);
+                btnClearTextFieldsActionPerformed(evt);
             }
         });
 
@@ -213,7 +217,7 @@ public class ManageUserPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(67, Short.MAX_VALUE)
-                .addComponent(tfClearTextFields, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnClearTextFields, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
         jPanel3Layout.setVerticalGroup(
@@ -248,13 +252,13 @@ public class ManageUserPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tfClearTextFields)
+                .addComponent(btnClearTextFields)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(254, 250, 224));
 
-        UsersTable.setModel(new javax.swing.table.DefaultTableModel(
+        tbUsersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -262,12 +266,12 @@ public class ManageUserPage extends javax.swing.JFrame {
                 "User ID", "User Password", "User Role", "User Name", "User IC Number", "User Phone Number", "User Email"
             }
         ));
-        UsersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbUsersTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UsersTableMouseClicked(evt);
+                tbUsersTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(UsersTable);
+        jScrollPane1.setViewportView(tbUsersTable);
 
         btnAdd.setBackground(new java.awt.Color(95, 111, 82));
         btnAdd.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -382,10 +386,10 @@ public class ManageUserPage extends javax.swing.JFrame {
 
     // Delete selected row
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbUsersTable.getModel();
         // Get selected row index
         try {
-            int selectedRowIndex = UsersTable.getSelectedRow();
+            int selectedRowIndex = tbUsersTable.getSelectedRow();
             model.removeRow(selectedRowIndex);
 
             // Save the changes to file
@@ -406,7 +410,7 @@ public class ManageUserPage extends javax.swing.JFrame {
             // Validate that all fields are filled before adding a new row
             // if TRUE, the row will be added
             if (validateFields()) {
-                DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
+                DefaultTableModel model = (DefaultTableModel) tbUsersTable.getModel();
 
                 // Generate the next UserID
                 String newUserID = generateUserID();
@@ -467,10 +471,10 @@ public class ManageUserPage extends javax.swing.JFrame {
     }//GEN-LAST:event_tfEmailActionPerformed
 
     // Display text of the selected row in the text fields
-    private void UsersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsersTableMouseClicked
+    private void tbUsersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUsersTableMouseClicked
 
-        DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
-        int selectedRowIndex = UsersTable.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tbUsersTable.getModel();
+        int selectedRowIndex = tbUsersTable.getSelectedRow();
         tfUserID.setText(model.getValueAt(selectedRowIndex, 0).toString());
         tfPassword.setText(model.getValueAt(selectedRowIndex, 1).toString());
         // Set the selected item for the combo box
@@ -481,7 +485,7 @@ public class ManageUserPage extends javax.swing.JFrame {
         tfPhoneNumber.setText(model.getValueAt(selectedRowIndex, 5).toString());
         tfEmail.setText(model.getValueAt(selectedRowIndex, 6).toString());
 
-    }//GEN-LAST:event_UsersTableMouseClicked
+    }//GEN-LAST:event_tbUsersTableMouseClicked
 
     // Add text from text fields to a new row
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -489,7 +493,7 @@ public class ManageUserPage extends javax.swing.JFrame {
             // Validate that all fields are filled before adding a new row
             // if TRUE, the row will be added
             if (validateFields()) {
-                DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
+                DefaultTableModel model = (DefaultTableModel) tbUsersTable.getModel();
 
                 // Generate the next UserID
                 String newUserID = generateUserID();
@@ -520,13 +524,13 @@ public class ManageUserPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void tfClearTextFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfClearTextFieldsActionPerformed
+    private void btnClearTextFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearTextFieldsActionPerformed
         clearTextFields();
-    }//GEN-LAST:event_tfClearTextFieldsActionPerformed
+    }//GEN-LAST:event_btnClearTextFieldsActionPerformed
 
-    private void tfUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserNameActionPerformed
+    private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfUserNameActionPerformed
+    }//GEN-LAST:event_tfUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -564,8 +568,8 @@ public class ManageUserPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable UsersTable;
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClearTextFields;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
@@ -583,14 +587,14 @@ public class ManageUserPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton tfClearTextFields;
+    private javax.swing.JTable tbUsersTable;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfICNumber;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfPhoneNumber;
     private javax.swing.JTextField tfUserID;
-    private javax.swing.JTextField tfUserName;
+    private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 
     // Method to load data to the JTable
@@ -621,7 +625,7 @@ public class ManageUserPage extends javax.swing.JFrame {
         }
 
         // Set the model to the JTable
-        UsersTable.setModel(model);
+        tbUsersTable.setModel(model);
     }
 
     private void clearTextFields() {
@@ -771,7 +775,7 @@ public class ManageUserPage extends javax.swing.JFrame {
     }
 
     private void saveDataToFile() {
-        DefaultTableModel model = (DefaultTableModel) UsersTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbUsersTable.getModel();
         int rowCount = model.getRowCount();
 
         // Use try-with-resources to automatically close resources

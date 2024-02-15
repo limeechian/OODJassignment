@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package java2024;
+package oodjassignment;
 
 /**
  *
  * @author Lim Ee Chian
  */
 public class UserSessionClass {
-    private String userID;
-    private String userRole;
+    private final String userID;
+    private final String userRole;
     
     public UserSessionClass(String userID, String userRole) {
         this.userID = userID;

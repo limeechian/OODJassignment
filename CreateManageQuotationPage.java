@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package java2024;
+package oodjassignment;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -393,27 +393,20 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(tfSearchProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(snQuantity)
-                                    .addComponent(tfProductType, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfProductName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfProductUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfSearchProductID)
+                            .addComponent(snQuantity, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfProductType)
+                            .addComponent(tfProductName)
+                            .addComponent(tfProductUnitPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                         .addGap(54, 54, 54)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE))
                             .addComponent(jScrollPane1)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
@@ -424,9 +417,12 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(btnRefresh)
-                                .addGap(33, 33, 33))))
+                                .addGap(33, 33, 33))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane2))
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -469,24 +465,23 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                     .addComponent(tfSearchProductID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
                     .addComponent(btnRefresh))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15)
-                            .addComponent(tfProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(tfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tfProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel19)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(tfProductUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addGap(7, 7, 7)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfProductUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -515,7 +510,7 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                         .addComponent(btnSave)
                         .addComponent(btnCreate))
                     .addComponent(jLabel22))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(254, 250, 224));
@@ -580,7 +575,7 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tfQuotationID, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -685,7 +680,7 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -696,8 +691,8 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
@@ -705,7 +700,7 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -713,14 +708,14 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -731,357 +726,6 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        // Create Quotation button - save into QuotationsTable.txt and 2ndQuotationsTable.txt  
-        
-        String discountText = tfDiscount.getText();
-        String deliveryFeeText = tfDeliveryFee.getText();
-        if (discountText.isEmpty() && deliveryFeeText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Discount and Delivery Fee are required.", "Error", JOptionPane.ERROR_MESSAGE); 
-        }
-        
-        String quotationID = tfQuotationID.getText();
-        Date quotationDate = dcQuotationDate.getDate();
-        Date validityDate = dcValidityDate.getDate();
-        String salespersonID = tfSalespersonID.getText();
-        String customerName = tfCustomerName.getText();
-        String customerPhoneNo = tfCustomerPhoneNo.getText();
-        String deliveryAddress = taDeliveryAddress.getText();
-        String subtotal = tfSubtotal.getText();
-        String discount = tfDiscount.getText();
-        String deliveryFee = tfDeliveryFee.getText();
-        String totalAmount = tfTotalAmount.getText();
-        
-        String generatedQuotationID = "";
-        
-        try {
-            // Check if the fields are filled
-            if (quotationDate == null || validityDate == null || salespersonID.isEmpty() || customerName.isEmpty() || customerPhoneNo.isEmpty() || deliveryAddress.isEmpty() || 
-                    subtotal.isEmpty() || discount.isEmpty() || deliveryFee.isEmpty() || totalAmount.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // Check if the tfQuotationID text field is empty
-                if (quotationID.isEmpty()) {
-                    // Generate the Quotation ID for the new Quotation record
-                    generatedQuotationID = generateQuotationID();
-                    
-                    // Set the generated Quotation ID in the tfQuotationID text field
-                    tfQuotationID.setText(generatedQuotationID);
-                }                 
-            }
-
-            // Format the date
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            String quotationDateString = dateFormat.format(quotationDate);
-            String validityDateString = dateFormat.format(validityDate);
-            
-        // All fields are filled, proceed with the select product
-        
-            // Write contents into QuotationsTable.txt file
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("QuotationsTable.txt",true))) {
-                DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
-                int rowCount = model.getRowCount();
-                
-                // Get value of the selected rows from the Select Product table
-                for (int i = 0; i < rowCount; i++) {
-                    String productID = model.getValueAt(i, 0).toString();
-                    String productType = model.getValueAt(i, 1).toString();
-                    String productName = model.getValueAt(i, 2).toString();
-                    String productUnitPrice = model.getValueAt(i, 3).toString();
-                    String quantity = model.getValueAt(i, 4).toString();
-                    
-                    // Quotation with product rows
-                    String [] productRow = {generatedQuotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,
-                        deliveryAddress,productID,productType,productName,productUnitPrice,quantity,subtotal,discount,deliveryFee,totalAmount};
-                    String rowProduct = String.join(";", productRow);
-                    bw.write(rowProduct);
-                    bw.newLine();
-                }
-                JOptionPane.showMessageDialog(rootPane, "Quotation is created successfully!");
-            } catch (IOException e) {
-                System.out.println("IOException occured during writing to QuotationsTable.txt: " + e.getMessage());
-            }
-
-            
-            // Write contents into 2ndQuotationsTable.txt file
-            try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("2ndQuotationsTable.txt",true))) {
-                // Quotation without product rows
-                String [] dataRow = {generatedQuotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,deliveryAddress,discount,deliveryFee,totalAmount};
-                String rowData = String.join(";", dataRow);
-                bw2.write(rowData);
-                bw2.newLine();
-                
-                // Navigate to the QuotationListPage
-                SwingUtilities.invokeLater(() -> {
-                    QuotationsListPage quotationsList = new QuotationsListPage();
-                    quotationsList.load2ndQuotationsTableData();  // Reload data in QuotationsListPage 
-                    quotationsList.setVisible(true);
-                    this.dispose();  // Dispose of CreateManageQuotationPage
-                });
-                
-            } catch (IOException e) {
-                System.out.println("IOException occured during writing to 2ndQuotationsTable.txt: " + e.getMessage());
-            }
-        } catch (NullPointerException e) {
-            System.out.println("NullPointerException occured during creating a new Quotation: " + e.getMessage());
-        }
-        
-    }//GEN-LAST:event_btnCreateActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // Save button
-
-        String quotationID = tfQuotationID.getText();
-        Date quotationDate = dcQuotationDate.getDate();
-        Date validityDate = dcValidityDate.getDate();
-        String salespersonID = tfSalespersonID.getText();
-        String customerName = tfCustomerName.getText();
-        String customerPhoneNo = tfCustomerPhoneNo.getText();
-        String deliveryAddress = taDeliveryAddress.getText();
-        String subtotal = tfSubtotal.getText();
-        String discount = tfDiscount.getText();
-        String deliveryFee = tfDeliveryFee.getText();
-        String totalAmount = tfTotalAmount.getText();
-        
-        // Format the date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String quotationDateString = dateFormat.format(quotationDate);
-        String validityDateString = dateFormat.format(validityDate);
-        
-        DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
-        
-        // Check if fields are filled
-        if (quotationID.isEmpty() || quotationDate == null || validityDate == null || salespersonID.isEmpty() || customerName.isEmpty() || customerPhoneNo.isEmpty() || 
-                deliveryAddress.isEmpty() || subtotal.isEmpty() || discount.isEmpty() || deliveryFee.isEmpty() || totalAmount.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        } else if (model.getRowCount() == 0) {
-            // The JTable has no rows
-            JOptionPane.showMessageDialog(this, "The table has no data.", "No Data", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        
-        // Read the contents of the file and modify the specific line(s) based on QuotationID
-        String filePath1 = "QuotationsTable.txt";
-        File inputFile1 = new File(filePath1);
-        List<String> lines1 = new ArrayList<>();
-        //boolean removedExisting = false;
-        boolean modified1 = false;
-        
-        try (BufferedReader br1 = new BufferedReader(new FileReader(inputFile1))) {
-            String line1;
-            while ((line1 = br1.readLine()) != null) {
-                String[] rowInFile1 = line1.split(";");
-                if (rowInFile1.length != 16) {
-                    continue;
-                }            
-                String existingQuotationID1 = rowInFile1[0].trim();
-                if (existingQuotationID1.equals(quotationID)) {
-                    continue;
-                }
-                lines1.add(line1);
-                
-            }
-                // Add the modified data to the lines list
-                int rowCount = model.getRowCount();
-                // Get value of the selected products from the tbSelectProduct table
-                for (int i = 0; i < rowCount; i++) {
-                    String productID = model.getValueAt(i, 0).toString();
-                    String productType = model.getValueAt(i, 1).toString();
-                    String productName = model.getValueAt(i, 2).toString();
-                    String productUnitPrice = model.getValueAt(i, 3).toString();
-                    String quantity = model.getValueAt(i, 4).toString(); 
-
-                    String[] rowModifyData1 = {quotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,deliveryAddress,
-                        productID,productType,productName,productUnitPrice,quantity,subtotal,discount,deliveryFee,totalAmount};
-                    String rowMData1 = String.join(";", rowModifyData1);
-                    lines1.add(rowMData1);
-                    modified1 = true;
-                } 
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-        
-        // Write the modified contents back to the QuotationsTable.txt file
-        if (modified1) {
-            try (BufferedWriter bw1 = new BufferedWriter(new FileWriter(inputFile1))) {
-                for (String line : lines1) {
-                    bw1.write(line);
-                    bw1.newLine();
-                }
-            } catch (IOException e) {
-                System.out.println("IOException occured during writing to QuotationsTable.txt: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "No matching Quotation record found in QuotationsTable.txt with the given Quotation ID.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-        // Read the content of the 2ndQuotationsTable.txt file and modify the specific line(s) based on Quotation ID
-        String filePath2 = "2ndQuotationsTable.txt";
-        File inputFile2 = new File(filePath2);
-        List<String> lines2 = new ArrayList<>();
-        boolean modified2 = false; // Flag to track if the data is modified
-        
-        try (BufferedReader br2 = new BufferedReader(new FileReader(inputFile2))) {
-            String line2;
-            while ((line2 = br2.readLine()) != null) {
-                String[] rowInFile2 = line2.split(";");
-                if (rowInFile2.length != 10) {
-                    // Skip the line if it doesn't have the correct number of elements
-                    continue;
-                }
-                
-                String existingQuotationID2 = rowInFile2[0].trim();
-                if (existingQuotationID2.equals(quotationID)) {
-                    // Modify the data for the matching QuotationID in ArrayList
-                    String[] rowModifyData2 = {quotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,
-                        deliveryAddress,discount,deliveryFee,totalAmount};
-                    String rowMData2 = String.join(";", rowModifyData2);
-                    lines2.add(rowMData2);
-                    modified2 = true;
-                } else {
-                    lines2.add(line2);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-        
-        // Write the modified contents back to the 2ndQuotationsTable.txt file
-        if (modified2) {
-            try (BufferedWriter bw2 = new BufferedWriter(new FileWriter(inputFile2))) {
-                for (String line : lines2) {
-                    bw2.write(line);
-                    bw2.newLine();
-                }
-            JOptionPane.showMessageDialog(this, "Modified Quotation is record saved successfully!");
-            } catch (IOException e) {
-                System.out.println("IOException occured during writing to 2ndQuotationsTable.txt: " + e.getMessage());
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "No matching Quotation record found in 2ndQuotationsTable.txt with the given Quotation ID.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-            
-        // Navigate to the QuotationListPage
-        SwingUtilities.invokeLater(() -> {
-            QuotationsListPage quotationsList = new QuotationsListPage();
-            quotationsList.load2ndQuotationsTableData();  // Reload data in QuotationsListPage 
-            quotationsList.setVisible(true);
-            this.dispose();  // Dispose of CreateManageQuotationPage
-        });
-     
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // Implement logic to remove a product from tbSelectProduct
-        
-        // Get the selected row index
-        int selectedRowIndex = tbSelectProduct.getSelectedRow();
-        
-        // Check if any row is selected
-        if (selectedRowIndex != -1) {
-            // Remove the selected row from the table model
-            DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
-            model.removeRow(selectedRowIndex);
-            
-            // Recalculate and update the subtotal
-            updateSubtotal(); 
-            
-            // Recalculate aUpdate the Total Amount
-            updateTotalAmount();
-            
-        } else {
-            // Inform the user that no row is selected
-            JOptionPane.showMessageDialog(null, "Please select a row to remove.","No Row Selected", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-    }//GEN-LAST:event_btnRemoveActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        
-        // Search for a product and display its details
-        String productID = tfSearchProductID.getText();
-        
-        // Read from ProductsTable.txt and display product details
-        try (FileReader fr = new FileReader("ProductsTable.txt");
-                BufferedReader br = new BufferedReader(fr)) {
-            
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] col = line.split(";");
-                String productIDFromFile = col[0].trim();
-                
-                if (productID.equals(productIDFromFile)) {
-                    // Product found, update text fields with respective details
-                    String type = col[2].trim();
-                    String name = col[1].trim();
-                    String unitPrice = col[3].trim();
-                    String description = col[4].trim();
-                    
-                    tfProductType.setText(type);
-                    tfProductName.setText(name);
-                    tfProductUnitPrice.setText(unitPrice);
-                    taProductDescription.setText(description);
-                    
-                    return;  // Exit the loop once the product is found
-                }
-            }
-            
-            // Product not found
-            JOptionPane.showMessageDialog(this, "Product not found.", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException e) {
-            // Handle IO Exception
-            System.out.println("IOException occured during searching Product ID: " + e.getMessage());  
-        }
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // Add a product to tbSelectProduct
-        
-        String productID = tfSearchProductID.getText();
-        String productType = tfProductType.getText();
-        String productName = tfProductName.getText();
-        String productUnitPrice = tfProductUnitPrice.getText();
-        //String productDescription = taProductDescription.getText();
-        int quantity = (int) snQuantity.getValue();
-        if (quantity < 0) {
-            snQuantity.setValue(0);
-        }
-        
-        // Validate inputs
-        if (productID.isEmpty() || productType.isEmpty() || productName.isEmpty() || productUnitPrice.isEmpty() || quantity == 0) {
-            // Display an error message
-            JOptionPane.showMessageDialog(this, "Please fill up all fields to add product.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // exit method if validation fails
-        }
-        
-        // Create an array with the product details
-        Object[] rowData = {productID,productType,productName,productUnitPrice,quantity};
-
-        // Get the table model from tbSelectProduct
-        DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
-        
-        // Add the new row to the table
-        model.addRow(rowData);
-        
-        // Clear the contents of specific text fields
-        clearFields();
-        
-        // Update subtotal whenever the table changes
-        updateSubtotal(); 
-        
-        // Update the Total Amount
-        updateTotalAmount();
-        
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // Refresh button - Clear some fields
-        
-        clearFields();
-        
-    }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void btnConfirmSaleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmSaleOrderActionPerformed
         // Confirm sale order
@@ -1130,9 +774,359 @@ public class CreateManageQuotationPage extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btnConfirmSaleOrderActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // Refresh button - Clear some fields
+
+        clearFields();
+
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // Create Quotation button - save into QuotationsTable.txt and 2ndQuotationsTable.txt
+
+        String discountText = tfDiscount.getText();
+        String deliveryFeeText = tfDeliveryFee.getText();
+        if (discountText.isEmpty() && deliveryFeeText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Discount and Delivery Fee are required.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        String quotationID = tfQuotationID.getText();
+        Date quotationDate = dcQuotationDate.getDate();
+        Date validityDate = dcValidityDate.getDate();
+        String salespersonID = tfSalespersonID.getText();
+        String customerName = tfCustomerName.getText();
+        String customerPhoneNo = tfCustomerPhoneNo.getText();
+        String deliveryAddress = taDeliveryAddress.getText();
+        String subtotal = tfSubtotal.getText();
+        String discount = tfDiscount.getText();
+        String deliveryFee = tfDeliveryFee.getText();
+        String totalAmount = tfTotalAmount.getText();
+
+        String generatedQuotationID = "";
+
+        try {
+            // Check if the fields are filled
+            if (quotationDate == null || validityDate == null || salespersonID.isEmpty() || customerName.isEmpty() || customerPhoneNo.isEmpty() || deliveryAddress.isEmpty() ||
+                subtotal.isEmpty() || discount.isEmpty() || deliveryFee.isEmpty() || totalAmount.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Check if the tfQuotationID text field is empty
+                if (quotationID.isEmpty()) {
+                    // Generate the Quotation ID for the new Quotation record
+                    generatedQuotationID = generateQuotationID();
+
+                    // Set the generated Quotation ID in the tfQuotationID text field
+                    tfQuotationID.setText(generatedQuotationID);
+                }
+            }
+
+            // Format the date
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String quotationDateString = dateFormat.format(quotationDate);
+            String validityDateString = dateFormat.format(validityDate);
+
+            // All fields are filled, proceed with the select product
+
+            // Write contents into QuotationsTable.txt file
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("QuotationsTable.txt",true))) {
+                DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
+                int rowCount = model.getRowCount();
+
+                // Get value of the selected rows from the Select Product table
+                for (int i = 0; i < rowCount; i++) {
+                    String productID = model.getValueAt(i, 0).toString();
+                    String productType = model.getValueAt(i, 1).toString();
+                    String productName = model.getValueAt(i, 2).toString();
+                    String productUnitPrice = model.getValueAt(i, 3).toString();
+                    String quantity = model.getValueAt(i, 4).toString();
+
+                    // Quotation with product rows
+                    String [] productRow = {generatedQuotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,
+                        deliveryAddress,productID,productType,productName,productUnitPrice,quantity,subtotal,discount,deliveryFee,totalAmount};
+                    String rowProduct = String.join(";", productRow);
+                    bw.write(rowProduct);
+                    bw.newLine();
+                }
+                JOptionPane.showMessageDialog(rootPane, "Quotation is created successfully!");
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to QuotationsTable.txt: " + e.getMessage());
+            }
+
+            // Write contents into 2ndQuotationsTable.txt file
+            try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("2ndQuotationsTable.txt",true))) {
+                // Quotation without product rows
+                String [] dataRow = {generatedQuotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,deliveryAddress,discount,deliveryFee,totalAmount};
+                String rowData = String.join(";", dataRow);
+                bw2.write(rowData);
+                bw2.newLine();
+
+                // Navigate to the QuotationListPage
+                SwingUtilities.invokeLater(() -> {
+                    QuotationsListPage quotationsList = new QuotationsListPage();
+                    quotationsList.load2ndQuotationsTableData();  // Reload data in QuotationsListPage
+                    quotationsList.setVisible(true);
+                    this.dispose();  // Dispose of CreateManageQuotationPage
+                });
+
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to 2ndQuotationsTable.txt: " + e.getMessage());
+            }
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException occured during creating a new Quotation: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // Save button
+
+        String quotationID = tfQuotationID.getText();
+        Date quotationDate = dcQuotationDate.getDate();
+        Date validityDate = dcValidityDate.getDate();
+        String salespersonID = tfSalespersonID.getText();
+        String customerName = tfCustomerName.getText();
+        String customerPhoneNo = tfCustomerPhoneNo.getText();
+        String deliveryAddress = taDeliveryAddress.getText();
+        String subtotal = tfSubtotal.getText();
+        String discount = tfDiscount.getText();
+        String deliveryFee = tfDeliveryFee.getText();
+        String totalAmount = tfTotalAmount.getText();
+
+        // Format the date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String quotationDateString = dateFormat.format(quotationDate);
+        String validityDateString = dateFormat.format(validityDate);
+
+        DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
+
+        // Check if fields are filled
+        if (quotationID.isEmpty() || quotationDate == null || validityDate == null || salespersonID.isEmpty() || customerName.isEmpty() || customerPhoneNo.isEmpty() ||
+            deliveryAddress.isEmpty() || subtotal.isEmpty() || discount.isEmpty() || deliveryFee.isEmpty() || totalAmount.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (model.getRowCount() == 0) {
+            // The JTable has no rows
+            JOptionPane.showMessageDialog(this, "The table has no data.", "No Data", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        // Read the contents of the file and modify the specific line(s) based on QuotationID
+        String filePath1 = "QuotationsTable.txt";
+        File inputFile1 = new File(filePath1);
+        List<String> lines1 = new ArrayList<>();
+        //boolean removedExisting = false;
+        boolean modified1 = false;
+
+        try (BufferedReader br1 = new BufferedReader(new FileReader(inputFile1))) {
+            String line1;
+            while ((line1 = br1.readLine()) != null) {
+                String[] rowInFile1 = line1.split(";");
+                if (rowInFile1.length != 16) {
+                    continue;
+                }
+                String existingQuotationID1 = rowInFile1[0].trim();
+                if (existingQuotationID1.equals(quotationID)) {
+                    continue;
+                }
+                lines1.add(line1);
+
+            }
+            // Add the modified data to the lines list
+            int rowCount = model.getRowCount();
+            // Get value of the selected products from the tbSelectProduct table
+            for (int i = 0; i < rowCount; i++) {
+                String productID = model.getValueAt(i, 0).toString();
+                String productType = model.getValueAt(i, 1).toString();
+                String productName = model.getValueAt(i, 2).toString();
+                String productUnitPrice = model.getValueAt(i, 3).toString();
+                String quantity = model.getValueAt(i, 4).toString();
+
+                String[] rowModifyData1 = {quotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,deliveryAddress,
+                    productID,productType,productName,productUnitPrice,quantity,subtotal,discount,deliveryFee,totalAmount};
+                String rowMData1 = String.join(";", rowModifyData1);
+                lines1.add(rowMData1);
+                modified1 = true;
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+        // Write the modified contents back to the QuotationsTable.txt file
+        if (modified1) {
+            try (BufferedWriter bw1 = new BufferedWriter(new FileWriter(inputFile1))) {
+                for (String line : lines1) {
+                    bw1.write(line);
+                    bw1.newLine();
+                }
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to QuotationsTable.txt: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No matching Quotation record found in QuotationsTable.txt with the given Quotation ID.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Read the content of the 2ndQuotationsTable.txt file and modify the specific line(s) based on Quotation ID
+        String filePath2 = "2ndQuotationsTable.txt";
+        File inputFile2 = new File(filePath2);
+        List<String> lines2 = new ArrayList<>();
+        boolean modified2 = false; // Flag to track if the data is modified
+
+        try (BufferedReader br2 = new BufferedReader(new FileReader(inputFile2))) {
+            String line2;
+            while ((line2 = br2.readLine()) != null) {
+                String[] rowInFile2 = line2.split(";");
+                if (rowInFile2.length != 10) {
+                    // Skip the line if it doesn't have the correct number of elements
+                    continue;
+                }
+
+                String existingQuotationID2 = rowInFile2[0].trim();
+                if (existingQuotationID2.equals(quotationID)) {
+                    // Modify the data for the matching QuotationID in ArrayList
+                    String[] rowModifyData2 = {quotationID,quotationDateString,validityDateString,salespersonID,customerName,customerPhoneNo,
+                        deliveryAddress,discount,deliveryFee,totalAmount};
+                    String rowMData2 = String.join(";", rowModifyData2);
+                    lines2.add(rowMData2);
+                    modified2 = true;
+                } else {
+                    lines2.add(line2);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+        // Write the modified contents back to the 2ndQuotationsTable.txt file
+        if (modified2) {
+            try (BufferedWriter bw2 = new BufferedWriter(new FileWriter(inputFile2))) {
+                for (String line : lines2) {
+                    bw2.write(line);
+                    bw2.newLine();
+                }
+                JOptionPane.showMessageDialog(this, "Modified Quotation is record saved successfully!");
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to 2ndQuotationsTable.txt: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No matching Quotation record found in 2ndQuotationsTable.txt with the given Quotation ID.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Navigate to the QuotationListPage
+        SwingUtilities.invokeLater(() -> {
+            QuotationsListPage quotationsList = new QuotationsListPage();
+            quotationsList.load2ndQuotationsTableData();  // Reload data in QuotationsListPage
+            quotationsList.setVisible(true);
+            this.dispose();  // Dispose of CreateManageQuotationPage
+        });
+
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // Add a product to tbSelectProduct
+
+        String productID = tfSearchProductID.getText();
+        String productType = tfProductType.getText();
+        String productName = tfProductName.getText();
+        String productUnitPrice = tfProductUnitPrice.getText();
+        //String productDescription = taProductDescription.getText();
+        int quantity = (int) snQuantity.getValue();
+        if (quantity < 0) {
+            snQuantity.setValue(0);
+        }
+
+        // Validate inputs
+        if (productID.isEmpty() || productType.isEmpty() || productName.isEmpty() || productUnitPrice.isEmpty() || quantity == 0) {
+            // Display an error message
+            JOptionPane.showMessageDialog(this, "Please fill up all fields to add product.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // exit method if validation fails
+        }
+
+        // Create an array with the product details
+        Object[] rowData = {productID,productType,productName,productUnitPrice,quantity};
+
+        // Get the table model from tbSelectProduct
+        DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
+
+        // Add the new row to the table
+        model.addRow(rowData);
+
+        // Clear the contents of specific text fields
+        clearFields();
+
+        // Update subtotal whenever the table changes
+        updateSubtotal();
+
+        // Update the Total Amount
+        updateTotalAmount();
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // Implement logic to remove a product from tbSelectProduct
+
+        // Get the selected row index
+        int selectedRowIndex = tbSelectProduct.getSelectedRow();
+
+        // Check if any row is selected
+        if (selectedRowIndex != -1) {
+            // Remove the selected row from the table model
+            DefaultTableModel model = (DefaultTableModel) tbSelectProduct.getModel();
+            model.removeRow(selectedRowIndex);
+
+            // Recalculate and update the subtotal
+            updateSubtotal();
+
+            // Recalculate aUpdate the Total Amount
+            updateTotalAmount();
+
+        } else {
+            // Inform the user that no row is selected
+            JOptionPane.showMessageDialog(null, "Please select a row to remove.","No Row Selected", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
     private void tfProductUnitPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductUnitPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfProductUnitPriceActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+
+        // Search for a product and display its details
+        String productID = tfSearchProductID.getText();
+
+        // Read from ProductsTable.txt and display product details
+        try (FileReader fr = new FileReader("ProductsTable.txt");
+            BufferedReader br = new BufferedReader(fr)) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] col = line.split(";");
+                String productIDFromFile = col[0].trim();
+
+                if (productID.equals(productIDFromFile)) {
+                    // Product found, update text fields with respective details
+                    String type = col[2].trim();
+                    String name = col[1].trim();
+                    String unitPrice = col[3].trim();
+                    String description = col[4].trim();
+
+                    tfProductType.setText(type);
+                    tfProductName.setText(name);
+                    tfProductUnitPrice.setText(unitPrice);
+                    taProductDescription.setText(description);
+
+                    return;  // Exit the loop once the product is found
+                }
+            }
+
+            // Product not found
+            JOptionPane.showMessageDialog(this, "Product not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException e) {
+            // Handle IO Exception
+            System.out.println("IOException occured during searching Product ID: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     
     // Method to load and display the old Quotation data to each text field and table

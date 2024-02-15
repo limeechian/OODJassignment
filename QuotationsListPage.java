@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package java2024;
+package oodjassignment;
 
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
@@ -27,6 +27,9 @@ public final class QuotationsListPage extends javax.swing.JFrame {
      */
     public QuotationsListPage() {
         initComponents();
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
         
         // Set up the custom close operation
         setupCloseOperation();

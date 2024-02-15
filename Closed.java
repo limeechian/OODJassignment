@@ -1,4 +1,4 @@
-package oodj;
+package oodjassignment;
 
 
 import com.lowagie.text.Document;
@@ -61,6 +61,10 @@ public class Closed extends javax.swing.JFrame {
     
     public Closed() {
         initComponents();
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
          loadTableData();
         // UserUtilityClass.displayUsername(tfUsername);
         addComboBoxActionListener();
@@ -306,7 +310,7 @@ public class Closed extends javax.swing.JFrame {
         // Method to load data into the JTable from the text file
     private void loadTableData() {
        // Text File
-        String filePath = "C:\\GitHub\\OODJassignment\\OODJAss\\SaleOrdersTable.txt";
+        String filePath = "SaleOrdersTable.txt";
         File file = new File(filePath);
 
         try {
@@ -349,7 +353,7 @@ public class Closed extends javax.swing.JFrame {
         }
        
           // Text File
-   /* String filePath = "C:\\GitHub\\OODJassignment\\OODJAss\\SaleOrdersTable.txt";
+   /* String filePath = "SaleOrdersTable.txt";
     File file = new File(filePath);
 
     try {

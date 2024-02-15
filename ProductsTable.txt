@@ -1,0 +1,254 @@
+ProductID;ProductName;ProductType;ProductUnitPrice;ProductDescription
+90420332;FREKVENS;Bar furniture;265;Bar table, in/outdoor, 51x51 cm
+368814;NORDVIKEN;Bar furniture;995;Bar table, 140x80 cm
+9333523;NORDVIKEN / NORDVIKEN;Bar furniture;2095;Bar table and 4 bar stools
+80155205;STIG;Bar furniture;69;Bar stool with backrest, 74 cm
+30180504;NORBERG;Bar furniture;225;Wall-mounted drop-leaf table, 74x60 cm
+10122647;INGOLF;Bar furniture;345;Bar stool with backrest, 63 cm
+70404875;FRANKLIN;Bar furniture;129;Bar stool with backrest, foldable, 63 cm
+60155602;DALFRED;Bar furniture;195;Bar stool, 63-74 cm
+50406465;FRANKLIN;Bar furniture;129;Bar stool with backrest, foldable, 63 cm
+69304221;EKEDALEN / EKEDALEN;Bar furniture;2176;Bar table and 4 bar stools
+90404879;FRANKLIN;Bar furniture;149;Bar stool with backrest, foldable, 74 cm
+121766;INGOLF;Bar furniture;395;Bar stool with backrest, 74 cm
+397736;NORRARYD;Bar furniture;395;Bar stool with backrest, 74 cm
+50420329;FREKVENS;Bar furniture;177;Bar stool with backrest, in/outdoor, 74 cm
+400550;EKEDALEN;Bar furniture;345;Bar stool with backrest, 75 cm
+29123958;MINNEN;Beds;395;Ext bed frame with slatted bed base, 80x200 cm
+49278341;BRIMNES;Beds;895, Bed frame w storage and headboard, 90x200 cm
+50461230;SMÃ…GÃ–RA;Beds;595;Cot;60x120 cm
+89326463;PLATSA;Beds;2111;Bed frame with 4 drawers, 140x244x163 cm
+50468953;VATTVIKEN;Beds;995;Armchair-bed
+69326609;SLÃ„KT;Beds;540;Ext bed frame with slatted bed base, 80x200 cm
+59099136;BRIMNES;Beds;795;Bed frame w storage and headboard, 140x200 cm
+40395245;NEIDEN;Beds;99;Bed frame, 90x200 cm
+69277307;LEIRVIK;Beds;1195;Bed frame, 180x200 cm
+70395239;NEIDEN;Beds;199;Bed frame, 140x200 cm
+89931560;HEMNES;Beds;675;Bed frame, 140x200 cm
+30446373;SLATTUM;Beds;595;Upholstered bed frame, 140x200 cm
+59248612;NEIDEN;Beds;199;Bed frame, 90x200 cm
+19254209;SAGSTUA;Beds;545;Bed frame, 140x200 cm
+20400691;BRIMNES;Beds;575;Bed frame with storage, 90x200 cm
+59297141;JONAXEL;Bookcases & shelving units;135;Frame with mesh baskets, 25x51x70 cm
+59201841;OLAUS;Bookcases & shelving units;290;1 shelf section, 92x36x181 cm
+59297674;JONAXEL;Bookcases & shelving units;915;Frame/mesh baskts/clths rl/shlv uts, 198x51x173 cm
+450347;KOLBJÃ–RN;Bookcases & shelving units;345;Cabinet in/outdoor, 80x81 cm
+69297287;JONAXEL;Bookcases & shelving units;375;Shelving unit, 182x51x160 cm
+99303461;IVAR;Bookcases & shelving units;1385;Shelv unit w table/cabinets/drawers, 175x30-104x179 cm
+70261131;GERSBY;Bookcases & shelving units;95;Bookcase, 60x180 cm
+20275814;KALLAX;Bookcases & shelving units;115;Shelving unit, 77x77 cm
+60282186;LACK;Bookcases & shelving units;199;Wall shelf unit, 30x190 cm
+278578;HYLLIS;Bookcases & shelving units;59;Shelving unit, 60x27x140 cm
+80275887;KALLAX;Bookcases & shelving units;250;Shelving unit, 77x147 cm
+50419972;JONAXEL;Bookcases & shelving units;175;Shelving unit, 80x38x160 cm
+30428326;HYLLIS;Bookcases & shelving units;39;Shelving unit, 60x27x74 cm
+90282180;LACK;Bookcases & shelving units;39;Wall shelf, 110x26 cm
+40178591;LAIVA;Bookcases & shelving units;85;Bookcase, 62x165 cm
+30441554;TIMMERVIKEN;Cabinets & cupboards;115;Door, 60x64 cm
+49300827;BESTÃ…, Cabinets & cupboards;1850;Storage combination w glass doors, 120x42x192 cm
+80441556;TIMMERVIKEN;Cabinets & cupboards;100;Door/drawer front, 60x38 cm
+29297958;BESTÃ…, Cabinets & cupboards;820;TV bench with drawers, 120x42x48 cm
+10443629;GLASSVIK;Cabinets & cupboards;175;Glass door, 60x38 cm
+80275887;KALLAX;Cabinets & cupboards;250;Shelving unit, 77x147 cm
+59286468;EKET;Cabinets & cupboards;311;Cabinet combination with legs, 70x35x80 cm
+40033763;IVAR;Cabinets & cupboards;295;Cabinet, 80x30x83 cm
+40383737;LOMMARP;Cabinets & cupboards;1116;Cabinet with glass doors, 86x199 cm
+10119206;DETOLF;Cabinets & cupboards;295;Glass-door cabinet, 43x163 cm
+59278307;KALLAX;Cabinets & cupboards;500;Shelving unit with 4 inserts, 77x147 cm
+49280042;BILLY / OXBERG;Cabinets & cupboards;315;Bookcase with doors, 80x30x106 cm
+30439565;SYVDE;Cabinets & cupboards;595;Cabinet with glass doors, 100x123 cm
+79286491;EKET;Cabinets & cupboardd;377;Cabinet combination with feet, 70x25x107 cm
+59248867;LIXHULT;Cabinets & cupboards;580;Storage combination, 140x82 cm
+60428990;NORRÃ…KER;CafÃ© furniture;295;Bench, 103 cm
+428974;NORRÃ…KER;CafÃ© furniture;145;Stool, 45 cm
+30428982;NORRÃ…KER;CafÃ© furniture;596;Table, 125x74 cm
+89323921;STENSELE;CafÃ© furniture;450;Table, 70x70 cm
+49288236;STENSELE;CafÃ© furniture;450;Table, 70 cm
+79241940;NORRÃ…KER / NORRÃ…KER;CafÃ© furniture;1385;Bar table and 2 bar stools, 74 cm
+90428984;NORRÃ…KER;CafÃ© furniture;395;Table, 74x74 cm
+40429014;NORRÃ…KER;CafÃ© furniture;476;Bar table, 74x74 cm
+70246089;JANINGE;CafÃ© furniture;595;Bar stool, 76 cm
+9288224;STENSELE;CafÃ© furniture;550;Bar table, 70 cm
+19304209;LEIFARNE;CafÃ© furniture;275;Chair with armrests
+39297156;STENSELE / RÃ–NNINGE;CafÃ© furniture;1140;Table and 2 chairs
+60246080;JANINGE;CafÃ© furniture;180;Chair
+397736;NORRARYD;CafÃ© furniture;395;Bar stool with backrest, 74 cm
+10422504;RÃ–NNINGE;CafÃ© furniture;345;Chair
+49011766;MELLTORP / ADDE;Chairs;179;Table and 2 chairs, 75 cm
+10209202;MALINDA;Chairs;25;Chair cushion, 40/35x38x7 cm
+40455649;BINGSTA;Chairs;595;Armchair
+40472861;SKRUVSTA;Chairs;545;Swivel chair
+79331865;LOBERGET / BLYSKÃ„R;Chairs;155;Swivel chair
+20456956;STRANDMON;Chairs;995;Wing chair
+20339420;RENBERGET;Chairs;175;Swivel chair
+79046260;SNILLE;Chairs;125;Swivel chair
+50078464;PELLO;Chairs;195;Armchair
+90339412;MILLBERGET;Chairs;350;Swivel chair
+9221016;FANBYN;Chairs;295;Chair with armrests
+29208194;FLINTAN / NOMINELL;Chairs;370;Office chair with armrests
+59297184;EKOLSUND;Chairs;1395;Recliner
+50434312;NILSOVE;Chairs;395;Chair with armrests
+50058376;AGEN;Chairs;245;Chair
+59297141;JONAXEL;Chests of drawers & drawer units;135;Frame with mesh baskets, 25x51x70 cm
+30469307;BRYGGJA;Chests of drawers & drawer units;1295;Chest of 9 drawers, 118x92 cm
+20341970;HELMER;Chests of drawers & drawer units;175;Drawer unit on castors, 28x69 cm
+9325387;PLATSA;Chests of drawers & drawer units;443;Chest of 2 drawers, 60x42x91 cm
+30326177;LENNART;Chests of drawers & drawer units;49;Drawer unit
+60403584;MALM;Chests of drawers & drawer units;555;Chest of 6 drawers, 160x78 cm
+75305709;RAST;Chests of drawers & drawer units;139;Chest of 3 drawers, 62x70 cm
+70366798;SONGESAND;Chests of drawers & drawer units;695;Chest of 6 drawers, 161x81 cm
+20403562;MALM;Chests of drawers & drawer units;295;Chest of 3 drawers, 80x78 cm
+10385950;KOPPANG;Chests of drawers & drawer units;395;Chest of 3 drawers, 90x83 cm
+10239280;HEMNES;Chests of drawers & drawer units;1095;Chest of 8 drawers, 160x96 cm
+80214549;MALM;Chests of drawers & drawer units;165;Chest of 2 drawers, 40x55 cm
+60322130;KULLEN;Chests of drawers & drawer units;89;Chest of 2 drawers, 35x49 cm
+60403602;MALM;Chests of drawers & drawer units;495;Chest of 6 drawers, 80x123 cm
+392041;BRIMNES;Chests of drawers & drawer units;325;Chest of 3 drawers, 78x95 cm
+10460888;SMÃ…GÃ–RA;Children's furniture;495;Wardrobe, 80x50x187 cm
+39337911;POÃ„NG;Children's furniture;179;Children's armchair
+19338054;TROFAST;Children's furniture;245;Storage combination, 44x30x91 cm
+59337670;LOBERGET / SIBBEN;Children's furniture;95;Children's desk chair
+50178411;LÃ„TT;Children's furniture;135;Children's table with 2 chairs
+50365177;MAMMUT;Children's furniture;129;Children's table, 77x55 cm
+40365371;MAMMUT;Children's furniture;59;Children's chair
+80382321;MAMMUT;Children's furniture;59;Children's chair
+90365180;MAMMUT;Children's furniture;149;Children's table, 85 cm
+80342052;CIRKUSTÃ„LT;Children's furniture;79;Children's tent
+60357737;UTTER;Children's furniture;45;Children's table
+60365346;MAMMUT;Children's furniture;59;Children's chair
+20382324;MAMMUT;Children's furniture;29;Children's stool
+29042877;TROFAST;Children's furniture;365;Storage combination, 99x44x94 cm
+40365366;MAMMU;Children's furniture;59;Children's chair
+50461230;SMÃ…GÃ–RA;Nursery furniture;595;Cot;60x120 cm
+10460888;SMÃ…GÃ–RA;Nursery furniture;495;Wardrobe, 80x50x187 cm
+99323614;SMÃ…GÃ–RA;Nursery furniture;370;Changing tbl/bookshelf w 1 shlf ut
+50460886;SMÃ…GÃ–RA;Nursery furniture;275;Changing table/bookshelf
+9323623;SMÃ…GÃ–RA;Nursery furniture;465;Changing tbl/bookshelf w 2 shlf ut
+30248537;SNIGLAR;Nursery furniture;295;Cot, 60x120 cm
+29067293;ANTILOP;Nursery furniture;110;Highchair with tray
+80226137;VÃ„DRA;Nursery furniture;95;Babycare mat, 48x74 cm
+70362427;SOLGUL;Nursery furniture;395;Cradle with foam mattress, 66x84 cm
+248567;SUNDVIK;Nursery furniture;695;Cot, 60x120 cm
+50422494;GODISHUS;Nursery furniture;395;Wardrobe, 60x51x178 cm
+10356127;VÃ„DRA;Nursery furniture;30;Cover for babycare mat, 48x74 cm
+30199283;Ã–NSKLIG;Nursery furniture;59;Stor baskets changing tbl set of 4
+30449748;ANTILOP;Nursery furniture;16;Supporting cushion
+20045205;SNIGLAR;Nursery furniture;145;Changing table, 72x53 cm
+69898415;TÃ„RNÃ–;Outdoor furniture;199;Table+2 chairs, outdoor
+49048425;GÃ…RÃ– / FREDÃ–N;Outdoor furniture;564;Hammock with stand
+19217863;FALHOLMEN;Outdoor furniture;1431;Table+4 chairs w armrests, outdoor
+80213446;Ã„PPLARÃ–;Outdoor furniture;205;Table/stool section, outdoor, 63x63 cm
+80208529;Ã„PPLARÃ–;Outdoor furniture;445;Bench with backrest, outdoor
+19217518;MASTHOLMEN;Outdoor furniture;984;2-seat conversation set, outdoor
+29289821;Ã„PPLARÃ–;Outdoor furniture;3442;Table+6 chairs armr+bench, outdoor
+10411440;TOSTERÃ–, Outdoor furniture;175;Storage box, outdoor, 129x44x79 cm
+49054015;Ã„PPLARÃ–;Outdoor furniture;384;Wall panel+gate-leg table, outdoor, 80x62x158 cm
+40332682;BROMMÃ–;Outdoor furniture;205;Lounger;outdoor
+79183681;Ã„PPLARÃ–;Outdoor furniture;1786;Table+2 chrs w armr+bench
+80287362;FREDÃ–N;Outdoor furniture;225;Hammock
+70228325;RESÃ–;Outdoor furniture;205;Children's picnic table
+20204925;Ã„PPLARÃ–;Outdoor furniture;99;Stool, outdoor
+99262168;Ã„PPLARÃ–;Outdoor furniture;2576;Modular corner sofa 3-seat, outdoor, 143/223x80x84 cm
+90443135;RÃ…SKOG;Room dividers;189;Trolley, 35x45x78 cm
+70301537;KALLAX;Room dividers;725;Shelving unit, 182x182 cm
+79166399;VIDGA;Room dividers;220;Room divider for corner
+30275861;KALLAX;Room dividers;495;Shelving unit, 147x147 cm
+9157261;ELVARLI;Room dividers;440;1 section, 52x36x222-350 cm
+99188003;ELVARLI;Room dividers;2377;4 sections, 262x36x222-350 cm
+69017475;KALLAX;Room dividers;895;Shelving unit with 8 inserts, 147x147 cm
+19278328;KALLAX;Room dividers;745;Shelving unit with 4 inserts, 147x147 cm
+59315159;ELVARLI;Room dividers;2397;3 sections, 258x51x222-350 cm
+70268811;BEKANT;Room dividers;357;Screen for desk, 120 cm
+9278338;KALLAX;Room dividers;1350;Shelving unit with 10 inserts, 182x182 cm
+69157376;ELVARLI;Room dividers;1231;2 sections, 175x51x222-350 cm
+9017483;KALLAX;Room dividers;695;Shelving unit with 4 inserts, 147x147 cm
+10459903;KALLAX;Sideboards;buffets & console tables;295;Shelving unit, 77x147 cm
+105064;LIATORP;Sideboards;buffets & console tables;445;Console table, 133x37 cm
+59278307;KALLAX;Sideboards;buffets & console tables;500;Shelving unit with 4 inserts, 77x147 cm
+30409035;LISTERBY;Sideboards;buffets & console tables;495;Console table, 92x38x71 cm
+70439728;LIATORP;Sideboards, buffets & console tables;1345;Sideboard, 145x87 cm
+19279177;LIXHULT;Sideboards, buffets & console tables;350;Cabinet combination, 120x35x57 cm
+9139724;BESTÃ…;Sideboards, buffets & console tables;890;Storage combination with doors, 180x40x74 cm
+40309257;HEMNES;Sideboards, buffets & console tables;1395;Sideboard, 157x88 cm
+327772;MALSJÃ–;Sideboards, buffets & console tables;2100;Sideboard basic unit, 145x92 cm
+40404202;HAVSTA;Sideboards, buffets & console tables;495;Console table, 100x35x63 cm
+49221038;EKET;Sideboards, buffets & console tables;620;Cabinet combination with legs, 140x35x80 cm
+60342072;REGISSÃ–R;Sideboards, buffets & console tables;796;Cabinet, 118x110 cm
+10251451;IKEA PS;Sideboards, buffets & console tables;425;Cabinet, 119x63 cm
+50415196;HAVSTA;Sideboards, buffets & console tables;695;Cabinet with plinth, 81x47x89 cm
+79301788;BESTÃ…;Sideboards, buffets & console tables;1820;Storage combination w doors/drawers, 120x42x240 cm
+79151312;SÃ–DERHAMN;Sofas & armchairs;890;1-seat section
+79135746;SÃ–DERHAMN;Sofas & armchairs;1300;Chaise longue
+79315945;STOCKSUND;Sofas & armchairs;995;Bench
+19305567;KIVIK;Sofas & armchairs;2995;3-seat sofa
+19305572;KIVIK;Sofas & armchairs;1695;2-seat sofa
+79135751;SÃ–DERHAMN;Sofas & armchairs;1295;Corner section
+10424621;KNOPPARP;Sofas & armchairs;345;2-seat sofa
+10469186;ANGERSBY;Sofas & armchairs;745;2-seat sofa
+19129178;EKTORP;Sofas & armchairs;1075;Two-seat sofa
+49129209;EKTORP;Sofas & armchairs;1750;Three-seat sofa
+79135949;SÃ–DERHAMN;Sofas & armchairs;4935;Corner sofa, 6-seat
+49303393;VIMLE;Sofas & armchairs;1400;Cover for corner sofa-bed, 4-seat
+39217838;SANDBACKEN;Sofas & armchairs;1327;Corner sofa, 3-seat
+39216754;FRIHETEN;Sofas & armchairs;1846;Corner sofa-bed with storage
+9251777;KLIPPAN;Sofas & armchairs;995;2-seat sofa
+19011777;MELLTORP;Tables & desks;199;Table, 125x75 cm
+70466496;LJUV;Tables & desks;245;Coffee table, 60x52 cm
+60214159;MALM;Tables & desks;475;Desk, 140x65 cm
+49011766;MELLTORP / ADDE;Tables & desks;179;Table and 2 chairs, 75 cm
+59133593l;LINNMON / ADILS;Tables & desks;270;Corner table, 120x120 cm
+19216694;SKÃ…DIS;Tables & desks;80;Pegboard combination, 36x56 cm
+50411990;GLADOM;Tables & desks;59;Tray table, 45x53 cm
+80213074;MICKE;Tables & desks;276;Desk, 105x50 cm
+90449905;LACK;Tables & desks;89;Coffee table, 90x55 cm
+10203610;MALM;Tables & desks;375;Dressing table, 120x41 cm
+30449908;LACK;Tables & desks;30;Side table, 55x55 cm
+30213076;MICKE;Tables & desks;175;Desk, 73x50 cm
+79214159;LINNMON / ADILS;Tables & desks;111;Table, 120x60 cm
+433895;LINDVED;Tables & desks;85;Side table, 50x68 cm
+80213309;VITTSJÃ–;Tables & desks;179;Coffee table, 75 cm
+471222;VESKEN;Trolleys;39;Trolley, 54x18x71 cm
+90443135;RÃ…SKOG;Trolleys;189;Trolley, 35x45x78 cm
+70243873;HORNAVAN;Trolleys;195;Trolley, 26x48x77 cm
+20399777;NISSAFORS;Trolleys;99;Trolley, 50.5x30x83 cm
+20463056;RÃ…SHULT;Trolleys;125;Trolley, 38x28 cm
+40463055;RÃ…SHULT;Trolleys;125;Trolley, 38x28 cm
+70303720;SUNNERSTA;Trolleys;125;Trolley, 56x33 cm
+60171433;GRUNDTAL;Trolleys;195;Trolley, 48x24x77 cm
+20281631;RISATORP;Trolleys;245;Trolley, 57x39x86 cm
+59276228;VADHOLMA;Trolleys;2295;Kitchen island with rack, 126x79x193 cm
+80035920;FÃ–RHÃ–JA;Trolleys;645;Kitchen trolley, 100x43 cm
+58487;FLYTTA;Trolleys;537;Kitchen trolley, 98x57 cm
+40391657;TORNVIKEN;Trolleys;1495;Kitchen island, 126x77 cm
+70334057;IKEA PS 2017;Trolleys;346.5;Side table on castors, 69x40 cm
+393371;TORNVIKEN;Trolleys;995;Kitchen island, 72x52 cm
+29297958;BESTÃ…;TV & media furniture;820;TV bench with drawers, 120x42x48 cm
+30441554;TIMMERVIKEN;TV & media furniture;115;Door, 60x64 cm
+80441556;TIMMERVIKEN;TV & media furniture;100;Door/drawer front, 60x38 cm
+39286855;BESTÃ… / EKET;TV & media furniture;1578;Cabinet combination for TV, 300x42x210 cm
+59299244;BESTÃ…;TV & media furniture;1000;TV bench with doors, 180x42x38 cm
+450088;LACK;TV & media furniture;50;TV bench, 90x26x45 cm
+20450087;LACK, TV & media furniture;249;TV bench, 149x55x35 cm
+50409874;BRIMNES;TV & media furniture;595;TV bench, 180x41x53 cm
+80227797;BYÃ…S, TV & media furniture;476;TV bench, 160x42x45 cm
+90339290;FJÃ„LLBO;TV & media furniture;595;TV bench, 150x36x54 cm
+10302295;BRUSALI;TV & media furniture;295;TV bench, 120x36x62 cm
+80116600;LIATORP;TV & media furniture;745;TV bench, 145x49x45 cm
+59278232;BRIMNES, TV & media furniture;1635;TV storage combination/glass doors, 320x41x190 cm
+70303428;VITTSJÃ–;TV & media furniture;245;TV bench, 100x36x53 cm
+60245844;BESTÃ…;TV & media furniture;170;Frame;120x40x38 cm
+50453758;RAKKESTAD;Wardrobes;345;Wardrobe with 2 doors, 79x176 cm
+29385672;PAX, Wardrobes;840;Wardrobe combination, 150x58x201 cm
+10460888;SMÃ…GÃ–RA;Wardrobes;495;Wardrobe, 80x50x187 cm
+19329304;PAX / FORSAND/VIKEDAL;Wardrobes;1195;Wardrobe combination, 150x60x201 cm
+59336270;PLATSA;Wardrobes;1259;Wardrobe with 2 doors+3 drawers, 160x42x181 cm
+19323929;PLATSA;Wardrobes;892;Wardrobe with 3 doors, 140x42x161 cm
+441758;KLEPPSTAD;Wardrobes;449;Wardrobe with 3 doors, 117x176 cm
+40407922;BRIMNES;Wardrobes;645;Wardrobe with 3 doors, 117x190 cm
+80437234;KLEPPSTAD;Wardrobes;349;Wardrobe with 2 doors, 79x176 cm
+69304909;PLATSA;Wardrobes;2740;Wardrobe with 7 doors+3 drawers, 240x57x221 cm
+80331973;VUKU;Wardrobes;49;Wardrobe, 74x51x149 cm
+49246468;PAX;Wardrobes;1510;Wardrobe, 150x60x201 cm
+40400478;BRIMNES;Wardrobes;475;Wardrobe with 2 doors, 78x190 cm
+69128567;PAX;Wardrobes;1280;Wardrobe, 175x58x201 cm
+79128821;PAX;Wardrobes;2805;Wardrobe, 200x60x201 cm
