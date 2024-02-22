@@ -1,0 +1,1 @@
+SaleOrderNo;PurchaseOrderNo;PurchaseOrderDate;UserID;CustomerName;CustomerPhoneNo;TotalAmount;ProductStatus;CompletedDate;DeliveryDate;DeliveryStatus;OrderStatus

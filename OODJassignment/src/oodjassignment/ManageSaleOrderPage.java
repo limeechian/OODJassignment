@@ -1,0 +1,1563 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package oodjassignment;
+
+
+import java.io.FileOutputStream;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author Lim Ee Chian
+ */
+public class ManageSaleOrderPage extends javax.swing.JFrame {
+    
+    
+    public String selectedSaleOrderNo;  // Public variable to store the selectedSaleOrderNo
+    // Define Delivery Status options for the cbDeliveryStatus JComboBox
+    String[] deliveryStatusOptions = {"", "Pending", "Ready for Delivery", "Delivered"};
+    // Define Order Status otpions for the cbOrderStatus JComboBox
+    String[] orderStatusOptions = {"", "Unapproved", "Approved", "Closed"};
+    
+    // Define Product Status options for the cbProductStatus JComboBox
+    String[] productStatusOptions = {"", "Pending", "In Progress", "Work Done"};
+    
+    // Method to set the Sale Order No.
+    public void setSaleOrderNo(String selectedSaleOrderNo) {
+        this.selectedSaleOrderNo = selectedSaleOrderNo;
+    }
+            
+            
+            
+    /**
+     * Creates new form ManageSaleOrder
+     */
+    public ManageSaleOrderPage() {
+        initComponents();
+        
+        // Set the location of the JFrame form to be centered on the screen
+        setLocationRelativeTo(null);
+        
+        // Set up the custom close operation
+        setupCloseOperation();
+        
+        UserUtilityClass.displayUsername(tfUsername);
+        
+        // Make the text field uneditable and not focusable
+        tfUsername.setEditable(false);
+        tfUsername.setFocusable(false);
+        
+        tfSaleOrderNo.setEditable(false);
+        tfSaleOrderNo.setFocusable(false);
+        
+        tfQuotationID.setEditable(false);
+        tfQuotationID.setFocusable(false);
+        
+        tfSalespersonID.setEditable(false);
+        tfSalespersonID.setFocusable(false);
+        
+        tfCustomerName.setEditable(false);
+        tfCustomerName.setFocusable(false);
+        
+        tfCustomerPhoneNo.setEditable(false);
+        tfCustomerPhoneNo.setFocusable(false);
+        
+        taDeliveryAddress.setEditable(false);
+        taDeliveryAddress.setFocusable(false);
+        
+        tfPurchaseOrderNo.setEditable(false);
+        tfPurchaseOrderNo.setFocusable(false);
+        
+        tfPurchaseOrderDate.setEditable(false);
+        tfPurchaseOrderDate.setFocusable(false);
+        
+        tfSubtotal.setEditable(false);
+        tfSubtotal.setFocusable(false);
+        
+        tfDiscount.setEditable(false);
+        tfDiscount.setFocusable(false);
+        
+        tfDeliveryFee.setEditable(false);
+        tfDeliveryFee.setFocusable(false);
+        
+        tfTotalAmount.setEditable(false);
+        tfTotalAmount.setFocusable(false);
+        
+        tfInvoiceNo.setEditable(false);
+        tfInvoiceNo.setFocusable(false);
+
+        cbProductStatus.setModel(new DefaultComboBoxModel<>(productStatusOptions));
+  
+        cbDeliveryStatus.setModel(new DefaultComboBoxModel<>(deliveryStatusOptions));
+    
+        cbOrderStatus.setModel(new DefaultComboBoxModel<>(orderStatusOptions));
+        
+    }
+    
+    // Override the windowClosing event
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+        // Close only this page
+        this.dispose();
+    }
+    
+    // Add this method to set up the custom close operation
+    private void setupCloseOperation() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        tfUsername = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbSelectedProduct = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tfPurchaseOrderNo = new javax.swing.JTextField();
+        tfSubtotal = new javax.swing.JTextField();
+        tfDiscount = new javax.swing.JTextField();
+        tfDeliveryFee = new javax.swing.JTextField();
+        tfTotalAmount = new javax.swing.JTextField();
+        tfPurchaseOrderDate = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        btnGenerateInvoice = new javax.swing.JButton();
+        tfInvoiceNo = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        dcInvoiceDate = new com.toedter.calendar.JDateChooser();
+        jPanel6 = new javax.swing.JPanel();
+        tfSaleOrderNo = new javax.swing.JTextField();
+        tfQuotationID = new javax.swing.JTextField();
+        tfSalespersonID = new javax.swing.JTextField();
+        tfCustomerName = new javax.swing.JTextField();
+        tfCustomerPhoneNo = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taDeliveryAddress = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        dcDeliveryDate = new com.toedter.calendar.JDateChooser();
+        dcCompletedDate = new com.toedter.calendar.JDateChooser();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        cbProductStatus = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        cbDeliveryStatus = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        cbOrderStatus = new javax.swing.JComboBox<>();
+        btnSave = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Sale Order Page");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(169, 179, 136));
+
+        tfUsername.setEditable(false);
+        tfUsername.setBackground(new java.awt.Color(254, 250, 224));
+
+        jLabel1.setFont(new java.awt.Font("Dubai Medium", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Manage Sale Order");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(251, 251, 251)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(254, 250, 224));
+
+        tbSelectedProduct.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Product ID", "Type", "Name", "Unit Price", "Quantity"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbSelectedProduct);
+
+        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel8.setText("Purchase Order No.");
+
+        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel9.setText("Purchase Order Date");
+
+        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel10.setText("Subtotal (RM)");
+
+        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel11.setText("Discount (%)");
+
+        jLabel12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel12.setText("Delivery Fee (RM)");
+
+        jLabel13.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel13.setText("Total Amount (RM)");
+
+        tfPurchaseOrderNo.setEditable(false);
+
+        tfSubtotal.setEditable(false);
+
+        tfDiscount.setEditable(false);
+
+        tfDeliveryFee.setEditable(false);
+
+        tfTotalAmount.setEditable(false);
+
+        tfPurchaseOrderDate.setEditable(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfTotalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfDeliveryFee))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfPurchaseOrderNo, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(tfPurchaseOrderDate))
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfSubtotal)
+                            .addComponent(tfDiscount, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10)
+                    .addComponent(tfPurchaseOrderNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11)
+                    .addComponent(tfDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPurchaseOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(tfDeliveryFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(tfTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(169, 179, 136));
+
+        jLabel19.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel19.setText("Invoice No.");
+
+        btnGenerateInvoice.setBackground(new java.awt.Color(95, 111, 82));
+        btnGenerateInvoice.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnGenerateInvoice.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerateInvoice.setText("Generate Invoice");
+        btnGenerateInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateInvoiceActionPerformed(evt);
+            }
+        });
+
+        tfInvoiceNo.setEditable(false);
+
+        jLabel20.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel20.setText("Invoice Date");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGenerateInvoice)
+                .addGap(47, 47, 47))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dcInvoiceDate, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                    .addComponent(tfInvoiceNo))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfInvoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20)
+                    .addComponent(dcInvoiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(btnGenerateInvoice)
+                .addContainerGap())
+        );
+
+        jPanel6.setBackground(new java.awt.Color(254, 250, 224));
+
+        tfSaleOrderNo.setEditable(false);
+
+        tfQuotationID.setEditable(false);
+
+        tfSalespersonID.setEditable(false);
+
+        tfCustomerName.setEditable(false);
+
+        tfCustomerPhoneNo.setEditable(false);
+
+        taDeliveryAddress.setEditable(false);
+        taDeliveryAddress.setColumns(20);
+        taDeliveryAddress.setRows(5);
+        jScrollPane2.setViewportView(taDeliveryAddress);
+
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel2.setText("Sale Order No.");
+
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel3.setText("Quotation ID");
+
+        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel4.setText("Salesperson ID");
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel5.setText("Customer Name");
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel6.setText("Customer Phone No.");
+
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel7.setText("Delivery Address");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfCustomerPhoneNo))
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(tfCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfQuotationID, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                                    .addComponent(tfSaleOrderNo))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(47, 47, 47)
+                                .addComponent(tfSalespersonID, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tfSaleOrderNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfQuotationID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfSalespersonID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tfCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tfCustomerPhoneNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(169, 179, 136));
+
+        jLabel18.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel18.setText("Delivery Date");
+
+        jLabel17.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel17.setText("Completed Date");
+
+        jLabel16.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel16.setText("Product Status");
+
+        cbProductStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel14.setText("Delivery Status");
+
+        cbDeliveryStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel15.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel15.setText("Order Status");
+
+        cbOrderStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnSave.setBackground(new java.awt.Color(95, 111, 82));
+        btnSave.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbProductStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dcCompletedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbDeliveryStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(68, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(dcDeliveryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(141, 141, 141))))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(cbDeliveryStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbProductStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(dcCompletedDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbOrderStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(dcDeliveryDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnSave))
+                .addGap(19, 19, 19))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+
+    // After clicking btnConfirmSaleOrder button, direct to this page, 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // After clicking btnConfirmSaleOrder button, direct to this page, 
+        // and user need to click btnSave button to really save all the data to SaleOrdersTable.txt and 2ndSaleOrdersTable.txt
+        // either the user wants to Create new sale order record or Save modified sale order record
+
+        String oldSaleOrderNo = tfSaleOrderNo.getText();
+        String generatedSaleOrderNo = null;
+        
+        String quotationID = tfQuotationID.getText();
+        String userID = tfSalespersonID.getText();
+        String customerName = tfCustomerName.getText();
+        String customerPhoneNo = tfCustomerPhoneNo.getText();
+        String deliveryAddress = taDeliveryAddress.getText();
+
+        String purchaseOrderNo = tfPurchaseOrderNo.getText();
+        String purchaseOrderDate = tfPurchaseOrderDate.getText();
+        String subtotal = tfSubtotal.getText();
+        String discount = tfDiscount.getText();
+        String deliveryFee = tfDeliveryFee.getText();
+        String totalAmount = tfTotalAmount.getText();
+        
+        String productStatus = (String) cbProductStatus.getSelectedItem();
+        Date completedDate = dcCompletedDate.getDate();
+        Date deliveryDate = dcDeliveryDate.getDate();
+        String invoiceNo = tfInvoiceNo.getText();
+        String deliveryStatus = (String) cbDeliveryStatus.getSelectedItem();
+        String orderStatus = (String) cbOrderStatus.getSelectedItem();
+        
+        DefaultTableModel model = (DefaultTableModel) tbSelectedProduct.getModel();
+        
+        // Check if fields are filled
+        if (quotationID.isEmpty() || userID.isEmpty() || customerName.isEmpty() || customerPhoneNo.isEmpty() || deliveryAddress.isEmpty() ||
+                purchaseOrderNo.isEmpty() || purchaseOrderDate.isEmpty() || subtotal.isEmpty() || discount.isEmpty() || deliveryFee.isEmpty() || totalAmount.isEmpty() || 
+                productStatus.isEmpty() || completedDate == null || deliveryDate == null || deliveryStatus.isEmpty() || orderStatus.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (model.getRowCount() == 0) {
+            // The JTable has no rows
+            JOptionPane.showMessageDialog(this, "The table has no data.", "No Data", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else {
+            // Check if the tfSaleOrderNo text field is empty
+            if (oldSaleOrderNo.isEmpty()) {
+                // Generate the SaleOrderNo for the new Sale Order record
+                // if sale order no text field empty, once click save, then generate the sale order no.
+                generatedSaleOrderNo = generateSaleOrderNo();
+                
+                // Set the generated Sale Order No in the tfSaleOrderNo text field
+                tfSaleOrderNo.setText(generatedSaleOrderNo);
+                
+                if (invoiceNo.isEmpty()) {
+                    tfInvoiceNo.setText("_");  // Set a placeholder value
+                }
+            } 
+        }
+        
+        boolean modifiedSaleOrder = false;
+        String saleOrderNo = tfSaleOrderNo.getText();  // the new one
+   
+        // Read the contents of the file and modify the specific line(s) based on Purchase Order No.
+        try (BufferedReader br1 = new BufferedReader(new FileReader("SaleOrdersTable.txt"))) {
+ 
+            String line1;
+            boolean firstLine = true;
+            
+            while ((line1 = br1.readLine()) != null) {
+                
+                String[] rowInFile1 = line1.split(";");
+                if (rowInFile1.length != 23) {
+                    continue;
+                }
+                
+                String existingSaleOrderNo1 = rowInFile1[0].trim();
+                
+                if ((existingSaleOrderNo1.equals(saleOrderNo))) {
+                    modifiedSaleOrder = true;
+                    if (modifiedSaleOrder) {
+                        modifyOldSaleOrder();
+                    }
+                }
+            }
+            
+            br1.close();
+        } catch (IOException e) {
+            System.out.println("Error reading SaleOrdersTable.txt file: " + e.getMessage());
+        }
+        
+        if (!modifiedSaleOrder) {
+            try {
+                createNewSaleOrder();
+            } catch (IOException e) {
+                System.out.println("Error executing createNewSaleOrder() method: " + e.getMessage());
+                
+            }
+        }
+  
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnGenerateInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateInvoiceActionPerformed
+        // Generate Invoice PDF
+        
+        String invoiceNo = tfInvoiceNo.getText();
+        Date invoiceDate = dcInvoiceDate.getDate();
+        
+        try {
+            if (invoiceDate == null) {
+                JOptionPane.showMessageDialog(this,"Please fill in the Invoice Date.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Check if the tfInvoiceNo text field is empty
+                if (invoiceNo.equals("_") || invoiceNo.isEmpty()) {
+
+                    int choice = JOptionPane.showConfirmDialog(this, "Do you wish to generate invoice?", "Invoice Generation Confirmation", JOptionPane.YES_NO_OPTION);
+        
+                    if (choice == JOptionPane.YES_OPTION) {                    
+                        
+                        // Generate the InvoiceNo
+                        String generatedInvoiceNo = generateInvoiceNo();
+
+                        // Set the generated InvoiceNo in the tfInvoiceNo text field
+                        tfInvoiceNo.setText(generatedInvoiceNo);
+ 
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                        String invoiceDateString = dateFormat.format(invoiceDate);
+                    
+                        String currentInvoiceNo = tfInvoiceNo.getText();
+                        String currentInvoiceDate = invoiceDateString;
+                        String currentPoNo = tfPurchaseOrderNo.getText();
+                        String currentPoDate = tfPurchaseOrderDate.getText();
+                        String currentSubtotal = tfSubtotal.getText();
+                        String currentDiscount = tfDiscount.getText();
+                        String currentDeliveryFee = tfDeliveryFee.getText();
+                        String currentTotalAmount = tfTotalAmount.getText();
+
+                        try {
+                            // Generate Invoice pdf
+                            generateInvoicePDF(currentInvoiceNo, currentInvoiceDate, currentPoNo, currentPoDate, currentSubtotal, currentDiscount, currentDeliveryFee, currentTotalAmount);
+                        } catch (IOException ex) {
+                            System.out.println("IOException occured during generating invoice: " + ex.getMessage());
+                        }    
+                        
+                        SaleOrdersListPage saleOrdersList = new SaleOrdersListPage();
+                        saleOrdersList.setVisible(true);
+                        // Close the current page
+                        this.dispose();
+
+                    }
+                }
+            }
+     
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException occured during creating a new Sale Order: " + e.getMessage());
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnGenerateInvoiceActionPerformed
+
+    // Method to generate invoice PDF from SaleOrdersTable.txt file
+    private void generateInvoicePDF(String invoiceNo, String invoiceDate, String purchaseOrderNo, String purchaseOrderDate, String subtotal, String discount, String deliveryFee, String totalAmount) throws IOException {
+        
+        String defaultInvoiceFileName = "YOYO Invoice_" + invoiceNo + ".pdf";
+        
+        JFileChooser fileChooser = new JFileChooser();  // Create a file chooser
+        fileChooser.setDialogTitle("Specify a file to save"); // Set dialog title
+        
+        // Add a file filter for PDF files
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("PDF Files", "pdf");
+        fileChooser.setFileFilter(filter);
+        
+        // Set the default filename
+        fileChooser.setSelectedFile(new File(defaultInvoiceFileName));
+        
+        // Show save dialog, if user approves, proceed with PDF generation
+        int userSelection = fileChooser.showSaveDialog(this);
+        
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Get the selected file
+            File fileToSave = fileChooser.getSelectedFile(); 
+            
+            // Ensure the file has a .pdf extension
+            String outputPath = fileToSave.getAbsolutePath();
+            
+            // Append .pdf extension if not present
+            if (!outputPath.toLowerCase().endsWith(".pdf")) {
+                outputPath += ".pdf"; 
+            }
+           
+            try {
+                // Create a document with A4
+                Document document = new Document(PageSize.A4);
+
+                PdfWriter.getInstance(document, new FileOutputStream(outputPath));
+               
+                document.open();
+
+            // Logo------------------
+            
+                // Get the A4 page size
+                Rectangle pageSize = document.getPageSize();
+
+                // Specify the path to the image file
+                String imagePath = "C:\\OODJassignment\\Yoyo_Logo.jpeg";
+                
+                // Create an Image instance
+                Image logoImage = Image.getInstance(imagePath);
+                
+                // Add some space before the logo
+                float spaceBeforeLogo = 30;
+                
+                // Calculate the center coordinates
+                float logoX = 36;
+                float logoY = pageSize.getHeight() - 36 - spaceBeforeLogo;  
+                // Set the position to the upper middle
+                logoImage.setAbsolutePosition(logoX, logoY);
+
+                // Set a standard size for the logo
+                float logoWidth = 100; // Adjust as needed
+                float logoHeight = 70; // Adjust as needed
+                logoImage.scaleAbsolute(logoWidth, logoHeight);
+                
+                // Add the image to the document
+                document.add(logoImage);
+                
+            // Logo------------------
+                
+                // Add company name and address (Leff upper corner)
+                Paragraph companyInfo = new Paragraph();
+                companyInfo.add("\nYOYO Furniture\n");
+                companyInfo.add("No. 22, Jalan ABC,\nTaman ABC, \nSelangor, Malaysia\n");
+                companyInfo.setSpacingBefore(20);
+                document.add(companyInfo);
+
+                // Add invoice details (Right upper corner)
+                Paragraph invoiceDetails = new Paragraph();
+                invoiceDetails.setAlignment(Element.ALIGN_RIGHT);
+                invoiceDetails.add("Invoice No: " + invoiceNo + "\n");
+                invoiceDetails.add("Invoice Date: " + invoiceDate + "\n");
+                invoiceDetails.add("Purchase Order No: " + purchaseOrderNo + "\n");
+                invoiceDetails.add("Purchase Order Date: " + purchaseOrderDate + "\n\n\n");
+                document.add(invoiceDetails);
+
+                // Add table with columns (Middle of the PDF)
+                PdfPTable table = new PdfPTable(4);  // 7 columns
+                table.setWidthPercentage(100);  // Set table width to 100%
+
+                // Create a Font object for bold text
+                Font boldFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+
+                // Add column headers with bold font
+                table.addCell(new PdfPCell(new Phrase("Product(s) Type", boldFont)));
+                table.addCell(new PdfPCell(new Phrase("Product(s) Name", boldFont)));
+                table.addCell(new PdfPCell(new Phrase("Unit Price (RM)", boldFont)));
+                table.addCell(new PdfPCell(new Phrase("Quantity", boldFont)));
+
+                // Read data from SaleOrdersTable.txt and populate the table
+                populateTableFromSaleOrdersTable(table, purchaseOrderNo);
+                document.add(table);
+
+                // Add total amount (Below the table)
+                Paragraph tableBelowData = new Paragraph();
+                tableBelowData.setAlignment(Element.ALIGN_RIGHT);
+                tableBelowData.add("Subtotal: RM " + subtotal + "\n");
+                tableBelowData.add("Discount: " + discount + " %\n");
+                tableBelowData.add("Delivery Fee: RM " + deliveryFee + "\n");
+                tableBelowData.add("TotalAmount: RM " + totalAmount + "\n");
+                document.add(tableBelowData);
+                
+                document.close();
+
+                JOptionPane.showMessageDialog(this, "PDF invoice generated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (DocumentException e) {
+                System.out.println("DocumentException occured during generating invoice: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "Error generating PDF invoice: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                
+            } catch (FileNotFoundException e) {
+                System.out.println("FileNotFoundException occured during generating invoice: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "File not found: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        
+        }
+    }
+    
+    private static void populateTableFromSaleOrdersTable(PdfPTable table, String selectedPurchaseOrderNo) throws IOException {
+        String filePath = "SaleOrdersTable.txt";
+                
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            boolean firstLine = false;
+            while ((line = br.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                    continue;  // Skip the header/columns name line
+                }
+                String[] rowData = line.split(";");
+                if (rowData.length >= 23) {
+                    String existPurchaseOrderNo = rowData[6].trim();
+                    if (existPurchaseOrderNo.equals(selectedPurchaseOrderNo)) {
+                        // Match found, Add data to the invoice table
+                        table.addCell(rowData[9].trim());  // Product(s) Type
+                        table.addCell(rowData[10].trim()); // Product(s) Name
+                        table.addCell(rowData[11].trim()); // Unit Price
+                        table.addCell(rowData[12].trim()); // Quantity
+                    }
+                }
+            }
+        }
+    }
+    
+    private void createNewSaleOrder() throws IOException {
+    
+        String oldSaleOrderNo = tfSaleOrderNo.getText();
+        String generatedSaleOrderNo = "";
+        
+        String quotationID = tfQuotationID.getText();
+        String userID = tfSalespersonID.getText();
+        String customerName = tfCustomerName.getText();
+        String customerPhoneNo = tfCustomerPhoneNo.getText();
+        String deliveryAddress = taDeliveryAddress.getText();
+        
+        String purchaseOrderNo = tfPurchaseOrderNo.getText();
+        String purchaseOrderDate = tfPurchaseOrderDate.getText();
+        String subtotal = tfSubtotal.getText();
+        String discount = tfDiscount.getText();
+        String deliveryFee = tfDeliveryFee.getText();
+        String totalAmount = tfTotalAmount.getText();
+        
+        String productStatus = (String) cbProductStatus.getSelectedItem();
+        Date completedDate = dcCompletedDate.getDate();
+        Date deliveryDate = dcDeliveryDate.getDate();
+        String invoiceNo = tfInvoiceNo.getText();
+        String deliveryStatus = (String) cbDeliveryStatus.getSelectedItem();
+        String orderStatus = (String) cbOrderStatus.getSelectedItem();
+        
+        DefaultTableModel model = (DefaultTableModel) tbSelectedProduct.getModel();                
+     
+        try {
+            
+            // Check if the tfSaleOrderNo text field is empty
+            if (oldSaleOrderNo.isEmpty()) {
+                // Generate the SaleOrderNo for the new Sale Order record
+                // if sale order no text field empty, once click save, then generate the sale order no.
+                generatedSaleOrderNo = generateSaleOrderNo();
+
+                // Set the generated Sale Order No in the tfSaleOrderNo text field
+                tfSaleOrderNo.setText(generatedSaleOrderNo);
+
+                if (invoiceNo.isEmpty()) {
+                    tfInvoiceNo.setText("_");  // Set a placeholder value
+                }
+            } 
+            
+  
+        String saleOrderNo = tfSaleOrderNo.getText();  // the new one
+        String currentInvoiceNo = tfInvoiceNo.getText();
+        
+        // Change from Date to String datatype for the DateChooser
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String completedDateString = dateFormat.format(completedDate);
+        String deliveryDateString = dateFormat.format(deliveryDate);
+
+        // Save to SaleOrdersTable.txt file 
+        
+            // Write the new contents to the SaleOrdersTable.txt file
+            try (BufferedWriter bw1 = new BufferedWriter(new FileWriter("SaleOrdersTable.txt", true))) {    
+                
+                // Get selected products data to the lines list 
+                int rowCount = model.getRowCount();
+                
+                // Get value of the selected products from the tbSelectedProduct table
+                for (int i = 0; i < rowCount; i++) {
+                    String productID = model.getValueAt(i, 0).toString();
+                    String productType = model.getValueAt(i, 1).toString();
+                    String productName = model.getValueAt(i, 2).toString();
+                    String productUnitPrice = model.getValueAt(i, 3).toString();
+                    String quantity = model.getValueAt(i, 4).toString(); 
+
+                    String[] rowCreateNewData1 = {saleOrderNo,quotationID,userID,customerName,customerPhoneNo,deliveryAddress,
+                        purchaseOrderNo,purchaseOrderDate,productID,productType,productName,productUnitPrice,quantity,subtotal,discount,deliveryFee,totalAmount,
+                        productStatus,completedDateString,deliveryDateString,deliveryStatus,orderStatus,currentInvoiceNo};
+                    String rowCNData1 = String.join(";", rowCreateNewData1);
+                    bw1.write(rowCNData1);
+                    bw1.newLine();
+                }
+                
+                bw1.close();
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to SaleOrdersTable.txt: " + e.getMessage());
+            }
+             
+            
+        // Save to 2ndSaleOrdersTable.txt file
+            
+            // Write the new contents to the 2ndSaleOrdersTable.txt file
+            try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("2ndSaleOrdersTable.txt", true))) {
+                // Sale Order without product rows
+                String[] rowCreateNewData2 = {saleOrderNo,purchaseOrderNo,purchaseOrderDate,userID,customerName,customerPhoneNo,
+                    totalAmount,productStatus,completedDateString,deliveryDateString,deliveryStatus,orderStatus};
+                    String rowCNData2 = String.join(";", rowCreateNewData2);
+                    bw2.write(rowCNData2);
+                    bw2.newLine();
+
+                    bw2.close();
+
+                    JOptionPane.showMessageDialog(rootPane, "New Sale Order is created successfully!");
+                    
+                    // Navigate to the SaleOrdersListPage
+                    SwingUtilities.invokeLater(() -> {
+                        SaleOrdersListPage saleOrdersList = new SaleOrdersListPage();
+                        saleOrdersList.load2ndSaleOrdersTableData();  // Reload data in SaleOrdersListPage
+                        saleOrdersList.setVisible(true);
+                        this.dispose();  // Dispose of ManageSaleOrderPage 
+                    });
+                    
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to 2ndSaleOrdersTable.txt: " + e.getMessage());
+            }
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException occured during creating a new Sale Order: " + e.getMessage());
+        }
+    
+    }
+    
+    
+    private void modifyOldSaleOrder() {
+        String oldSaleOrderNo = tfSaleOrderNo.getText();
+        String quotationID = tfQuotationID.getText();
+        String userID = tfSalespersonID.getText();
+        String customerName = tfCustomerName.getText();
+        String customerPhoneNo = tfCustomerPhoneNo.getText();
+        String deliveryAddress = taDeliveryAddress.getText();
+        
+        
+        String purchaseOrderNo = tfPurchaseOrderNo.getText();
+        String purchaseOrderDate = tfPurchaseOrderDate.getText();
+        String subtotal = tfSubtotal.getText();
+        String discount = tfDiscount.getText();
+        String deliveryFee = tfDeliveryFee.getText();
+        String totalAmount = tfTotalAmount.getText();
+        
+        String productStatus = (String) cbProductStatus.getSelectedItem();
+        Date completedDate = dcCompletedDate.getDate();
+        Date deliveryDate = dcDeliveryDate.getDate();
+        String deliveryStatus = (String) cbDeliveryStatus.getSelectedItem();
+        String orderStatus = (String) cbOrderStatus.getSelectedItem();
+        
+        DefaultTableModel model = (DefaultTableModel) tbSelectedProduct.getModel();
+        
+        String currentInvoiceNo = tfInvoiceNo.getText();
+        
+        // Change from Date to String datatype for the DateChooser
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String completedDateString = dateFormat.format(completedDate);
+        String deliveryDateString = dateFormat.format(deliveryDate);                
+
+        
+    // Save to SaleOrdersTable.txt file 
+    
+        List<String> lines1 = new ArrayList<>();
+        boolean modified1 = false;
+    
+        try (BufferedReader br1 = new BufferedReader(new FileReader("SaleOrdersTable.txt"))) {
+            String line1;
+            while ((line1 = br1.readLine()) != null) {
+                String[] rowInFile1 = line1.split(";");
+                if (rowInFile1.length != 23) {
+                    continue;
+                }
+                
+                String existingSaleOrderNo1 = rowInFile1[0].trim();
+                if (existingSaleOrderNo1.equals(oldSaleOrderNo)) {
+                    continue;
+                }
+                lines1.add(line1);
+            }
+            
+            // Add the modified data to the lines list
+            int rowCount = model.getRowCount();
+            // Get value of the selected products from the tbSelectedProduct table
+            for (int i = 0; i < rowCount; i++) {
+                String productID = model.getValueAt(i, 0).toString();
+                    String productType = model.getValueAt(i, 1).toString();
+                    String productName = model.getValueAt(i, 2).toString();
+                    String productUnitPrice = model.getValueAt(i, 3).toString();
+                    String quantity = model.getValueAt(i, 4).toString(); 
+
+                    String[] rowModifyData1 = {oldSaleOrderNo,quotationID,userID,customerName,customerPhoneNo,deliveryAddress,
+                purchaseOrderNo,purchaseOrderDate,productID,productType,productName,productUnitPrice,quantity,subtotal,discount,deliveryFee,totalAmount,
+                productStatus,completedDateString,deliveryDateString,deliveryStatus,orderStatus,currentInvoiceNo};
+                    String rowMData1 = String.join(";", rowModifyData1);
+                    lines1.add(rowMData1);
+                    modified1 = true;
+            }
+            
+            br1.close();
+        } catch (IOException e) {
+            System.out.println("Error reading SaleOrdersTable.txt file: " + e.getMessage());
+        }
+        
+        // Write the modified contents back to the SaleOrdersTable.txt file
+        if (modified1) {
+            try (BufferedWriter bw1 = new BufferedWriter(new FileWriter("SaleOrdersTable.txt"))) {
+                for (String line : lines1) {
+                    bw1.write(line);
+                    bw1.newLine();
+                }
+                
+                bw1.close();
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to SaleOrdersTable.txt: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No matching Sale Order record found in SaleOrdersTable.txt with the given Sale Order No.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    // Save to 2ndSaleOrdersTable.txt file
+    
+        List<String> lines2 = new ArrayList<>();
+        boolean modified2 = false;
+
+        try (BufferedReader br2 = new BufferedReader(new FileReader("2ndSaleOrdersTable.txt"))) {
+            String line2;
+            
+            while ((line2 = br2.readLine()) != null) {
+                String[] rowInFile2 = line2.split(";");
+                if (rowInFile2.length != 12) {
+                    continue;
+                }
+                String existingSaleOrderNo2 = rowInFile2[0].trim();
+
+                if (existingSaleOrderNo2.equals(oldSaleOrderNo)) {
+                    continue;
+                } 
+                lines2.add(line2);
+            }
+            // Modify the data for the matching Sale Order No in ArrayList
+            String[] rowModifyData2 = {oldSaleOrderNo,purchaseOrderNo,purchaseOrderDate,userID,customerName,customerPhoneNo,
+                    totalAmount,productStatus,completedDateString,deliveryDateString,deliveryStatus,orderStatus};
+            String rowMData2 = String.join(";", rowModifyData2);
+            lines2.add(rowMData2);
+            modified2 = true;
+            
+            br2.close();
+        } catch (IOException e) {
+            System.out.println("Error reading 2ndSaleOrdersTable.txt file: " + e.getMessage());
+        }
+        
+        if (modified2) {
+            try (BufferedWriter bw2 = new BufferedWriter(new FileWriter("2ndSaleOrdersTable.txt"))) {
+                for (String line : lines2) {
+                    bw2.write(line);
+                    bw2.newLine();
+                }
+                
+                bw2.close();
+                
+                JOptionPane.showMessageDialog(this, "Modified Sale Order record saved successfully!");
+            } catch (IOException e) {
+                System.out.println("IOException occured during writing to 2ndSaleOrdersTable.txt: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No matching Sale Order record found in 2ndSaleOrdersTable.txt with the given Sale Order No.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        // Navigate to the SaleOrdersListPage
+        SwingUtilities.invokeLater(() -> {
+            SaleOrdersListPage saleOrdersList = new SaleOrdersListPage();
+            saleOrdersList.load2ndSaleOrdersTableData();  // Reload data in SaleOrdersListPage
+            saleOrdersList.setVisible(true);
+            this.dispose();  // Dispose of ManageSaleOrderPage 
+        });
+
+    }
+    
+    
+    public void setPurchaseOrderInfo(String purchaseOrderNo, String purchaseOrderDate) {
+        // Set the Purchase Order information in the text fields
+        tfPurchaseOrderNo.setText(purchaseOrderNo);
+        tfPurchaseOrderDate.setText(purchaseOrderDate);
+        
+    }
+    
+    
+    // Method to load and display the Sale Order data to each text field and table that just being confirmed
+    public void loadQuotationDataDisplayAtSaleOrder(String confirmedSaleOrderQuotationID) throws ParseException {
+        
+        // Create the table model - Update the table with the select products information
+        DefaultTableModel model = (DefaultTableModel) tbSelectedProduct.getModel();
+        // Clear existing rows from the table
+        model.setRowCount(0);
+        
+        // Search in QuotationsTable.txt
+        try (BufferedReader br = new BufferedReader(new FileReader("QuotationsTable.txt"))) {
+            String line;
+            boolean firstLine = true;
+            
+            while ((line = br.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                    continue;  
+                }
+                String[] col = line.split(";"); 
+                if (col.length >= 16) {
+                    String quotationID = col[0].trim();
+                    if (quotationID.equals(confirmedSaleOrderQuotationID)) {
+                        // Match found, extract relevant informaiton
+                        // Repeated
+                        String userID = col[3].trim();
+                        String customerName = col[4].trim();
+                        String customerPhoneNo = col[5].trim();
+                        String deliveryAddress = col[6].trim();
+                        String subtotal = col[12].trim();
+                        String discount = col[13].trim();
+                        String deliveryFee = col[14].trim();
+                        String totalAmount = col[15].trim();
+                                                
+                        // not repeated
+                        String productID = col[7].trim();
+                        String productType = col[8].trim();
+                        String productName = col[9].trim();
+                        String productUnitPrice = col[10].trim();
+                        String quantity = col[11].trim();
+                        
+                        // Assign the extracted information to respective text fields, date choosers and table
+                        tfQuotationID.setText(confirmedSaleOrderQuotationID);
+                        tfSalespersonID.setText(userID);
+                        tfCustomerName.setText(customerName);
+                        tfCustomerPhoneNo.setText(customerPhoneNo);
+                        taDeliveryAddress.setText(deliveryAddress);
+                        
+                        tfSubtotal.setText(subtotal);
+                        tfDiscount.setText(discount);
+                        tfDeliveryFee.setText(deliveryFee);
+                        tfTotalAmount.setText(totalAmount);
+                        
+                        // Add a new row to the table with the selected products information
+                        Object[] rowData = {productID,productType,productName,productUnitPrice,quantity};
+                        model.addRow(rowData);
+                    }
+                }
+            }
+            br.close();
+        } catch (IOException e) {
+            System.out.println("IOException occured during loading old Quotation data: " + e.getMessage());
+        }
+
+    } 
+    
+    // Method to load and display the old Sale Order data to each text field and table
+    public void loadOldSaleOrderData(String selectedSaleOrderNo) throws ParseException {
+       
+        // Create the table model - Update the table with the selected products information
+        DefaultTableModel model = (DefaultTableModel) tbSelectedProduct.getModel();
+        // Clear existing rows from the table
+        model.setRowCount(0);
+        
+        // Search in SaleOrdersTable.txt
+        try (BufferedReader br = new BufferedReader(new FileReader("SaleOrdersTable.txt"))) {
+            String line;
+            boolean firstLine = true;
+            
+            while ((line = br.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                    continue;  
+                }
+                
+                String[] col = line.split(";"); 
+                if (col.length >= 23) {
+                    String saleOrderNo = col[0].trim();
+                    if (saleOrderNo.equals(selectedSaleOrderNo)) {
+                        // Match found, extract relevant information
+                        // Repeated
+                        String quotationID = col[1].trim();
+                        String userID = col[2].trim();
+                        String customerName = col[3].trim();
+                        String customerPhoneNo = col[4].trim();
+                        String deliveryAddress = col[5].trim();
+                        String purchaseOrderNo = col[6].trim();
+                        String subtotal = col[13].trim();
+                        String discount = col[14].trim();
+                        String deliveryFee = col[15].trim();
+                        String totalAmount = col[16].trim();
+                        String invoiceNo = col[22].trim();
+                        
+                        // Date in String datatype
+                        String purchaseOrderDate = col[7].trim();
+                        String completedDateString = col[18].trim();
+                        String deliveryDateString = col[19].trim();
+  
+                        // combo box
+                        String productStatus = col[17].trim();
+                        String deliveryStatus = col[20].trim();
+                        String orderStatus = col[21].trim();
+                        
+                        // Not repeated
+                        String productID = col[8].trim();
+                        String productType = col[9].trim();
+                        String productName = col[10].trim();
+                        String productUnitPrice = col[11].trim();
+                        String quantity = col[12].trim();
+                        
+                        // Change back from String to Date datatype for the DateChooser
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                        Date completedDate = dateFormat.parse(completedDateString);
+                        Date deliveryDate = dateFormat.parse(deliveryDateString);
+                        
+                        // Assign the extracted information to respective text fields, date choosers and table
+                        dcCompletedDate.setDate(completedDate);
+                        dcDeliveryDate.setDate(deliveryDate);
+
+                        tfSaleOrderNo.setText(selectedSaleOrderNo);
+                        tfQuotationID.setText(quotationID);
+                        tfSalespersonID.setText(userID);
+                        tfCustomerName.setText(customerName);
+                        tfCustomerPhoneNo.setText(customerPhoneNo);
+                        taDeliveryAddress.setText(deliveryAddress);
+                        
+                        tfPurchaseOrderNo.setText(purchaseOrderNo);
+                        tfPurchaseOrderDate.setText(purchaseOrderDate);
+                        
+                        tfSubtotal.setText(subtotal);
+                        tfDiscount.setText(discount);
+                        tfDeliveryFee.setText(deliveryFee);
+                        tfTotalAmount.setText(totalAmount);
+                        
+                        dcCompletedDate.setDate(deliveryDate);
+                        dcDeliveryDate.setDate(deliveryDate);
+                        tfInvoiceNo.setText(invoiceNo);
+                        
+                        cbProductStatus.setSelectedItem(productStatus);
+                        cbDeliveryStatus.setSelectedItem(deliveryStatus);
+                        cbOrderStatus.setSelectedItem(orderStatus);
+                        
+                        // Add a rows to the table with the selected products information from the Quotation record
+                        Object[] rowData = {productID,productType,productName,productUnitPrice,quantity};
+                        model.addRow(rowData);
+                    }
+                }    
+            }
+            
+            //br.close();
+        } catch (IOException e) {
+            System.out.println("IOException occured during loading old Sale Order data: " + e.getMessage());
+        }
+    }
+    
+    
+    // Method to generate the next Sale Order No
+    private String generateSaleOrderNo() {
+        // Read the current Sale Order No number from the SaleOrderNo.txt 
+        try (BufferedReader br = new BufferedReader(new FileReader("SaleOrderNo.txt"))) {
+            String currentSaleOrderNo = br.readLine();
+            int nextSaleOrderNo = Integer.parseInt(currentSaleOrderNo) + 1;  // Increment the current Quotation ID number
+            
+            br.close();
+            // Write the updated Sale Order No number back to the SaleOrderNo.txt file
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("SaleOrderNo.txt"))) {
+                bw.write(String.valueOf(nextSaleOrderNo));
+                
+                bw.close();
+            }
+            
+            // Format the Sale Order No with leading zeros (e.g., S00001, S00002)
+            String newSaleOrderNo = String.format("%05d", nextSaleOrderNo);
+            
+            // Generate the new Sale Order No
+            String saleOrderNo = "S" + newSaleOrderNo;
+            
+            return saleOrderNo; 
+            
+        } catch (IOException e) {
+            // Handle file reading error
+            System.out.println("IOException occured during generating Quotation ID: " + e.getMessage());
+        }
+        return null;
+    }
+    
+    // Method to generate the next Invoice No
+    private String generateInvoiceNo() {
+        // Read the current Invoice No number from the InvoiceNo.txt file
+        try (BufferedReader br = new BufferedReader(new FileReader("InvoiceNo.txt"))) {
+            String currentInvNo = br.readLine();
+            int nextInvNo = Integer.parseInt(currentInvNo) + 1;  // Increment the current Invoice No number
+            
+            br.close();
+            
+            // Write the updated Invoice No number back to the InvoiceNo.txt file
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("InvoiceNo.txt"))) {
+                bw.write(String.valueOf(nextInvNo));
+                
+                bw.close();
+            }
+            
+            // Format the Invoice No with leading zeros (e.g., INV00001, INV00002)
+            String newInvNo = String.format("%05d", nextInvNo);
+            
+            // Generate the new Invoice No
+            String invoiceNO = "INV" + newInvNo;
+            
+            return invoiceNO; 
+        } catch (IOException e) {
+            // Handle file reading error
+            System.out.println("IOException occured during generating Invoice No: " + e.getMessage());
+        }
+        return null;
+    }
+    
+    
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ManageSaleOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ManageSaleOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ManageSaleOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ManageSaleOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ManageSaleOrderPage().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerateInvoice;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cbDeliveryStatus;
+    private javax.swing.JComboBox<String> cbOrderStatus;
+    private javax.swing.JComboBox<String> cbProductStatus;
+    private com.toedter.calendar.JDateChooser dcCompletedDate;
+    private com.toedter.calendar.JDateChooser dcDeliveryDate;
+    private com.toedter.calendar.JDateChooser dcInvoiceDate;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea taDeliveryAddress;
+    private javax.swing.JTable tbSelectedProduct;
+    private javax.swing.JTextField tfCustomerName;
+    private javax.swing.JTextField tfCustomerPhoneNo;
+    private javax.swing.JTextField tfDeliveryFee;
+    private javax.swing.JTextField tfDiscount;
+    private javax.swing.JTextField tfInvoiceNo;
+    private javax.swing.JTextField tfPurchaseOrderDate;
+    private javax.swing.JTextField tfPurchaseOrderNo;
+    private javax.swing.JTextField tfQuotationID;
+    private javax.swing.JTextField tfSaleOrderNo;
+    private javax.swing.JTextField tfSalespersonID;
+    private javax.swing.JTextField tfSubtotal;
+    private javax.swing.JTextField tfTotalAmount;
+    private javax.swing.JTextField tfUsername;
+    // End of variables declaration//GEN-END:variables
+}

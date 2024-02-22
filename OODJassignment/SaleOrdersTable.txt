@@ -1,0 +1,1 @@
+SaleOrderNo;QuotationID;UserID;CustomerName;CustomerPhoneNo;DeliveryAddress;PurchaseOrderNo;PurchaseOrderDate;ProductID;ProductType;ProductName;ProductUnitPrice;Quantity;Subtotal;Discount;DeliveryFee;TotalAmount;ProductStatus;CompletedDate;DeliveryDate;DeliveryStatus;OrderStatus;InvoiceNo
